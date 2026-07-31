@@ -1,19 +1,31 @@
 /* =========================================================
-   BRUTALIST SYSTEM MANIFEST STYLESHEET
-   Change CSS variables in :root to customize colors/fonts
+   STYLE: INDUSTRIAL HAZARD BRUTALISM
+   Aesthetic: Heavy borders, hard offset shadows, caution hatch
+   patterns, and high-impact typography.
    ========================================================= */
 
 :root {
-    --bg: #f2f2eb;
-    --main: #000000;
-    --accent: #ccff00; /* Neon Lime/Yellow Accent */
-    --white: #ffffff;
+    /* Color Palette */
+    --bg: #dcdcd6; /* Raw Concrete Grey */
+    --surface: #ffffff; /* Pure White */
+    --text: #000000; /* Pitch Black */
+    --yellow: #ffea00; /* Caution Yellow */
+    --hazard-red: #ff3300; /* Alert Red */
+    --cyan: #00f0ff; /* Electric Cyan */
+
+    /* Structural Rules */
+    --border: 4px solid var(--text);
+    --border-thin: 2px solid var(--text);
+    --shadow: 7px 7px 0px var(--text);
+    --shadow-hover: 10px 10px 0px var(--text);
+    --shadow-active: 2px 2px 0px var(--text);
+
+    /* Fonts */
+    --font-heading: "Arial Black", "Impact", sans-serif;
     --font-mono: "Courier New", Courier, monospace;
-    --font-sans: Arial, Helvetica, sans-serif;
-    --border: 4px solid var(--main);
-    --shadow: 6px 6px 0px var(--main);
 }
 
+/* Global Reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -22,183 +34,241 @@
 
 body {
     background-color: var(--bg);
-    color: var(--main);
-    font-family: var(--font-sans);
-    padding: 20px;
-    line-height: 1.4;
+    color: var(--text);
+    font-family: var(--font-mono);
+    padding: 24px 12px;
+    line-height: 1.5;
 }
 
+/* Main Canvas Wrapper */
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-/* Status Header Bar */
-.status-bar {
-    background: var(--main);
-    color: var(--white);
-    font-family: var(--font-mono);
-    padding: 8px 15px;
-    font-size: 0.9rem;
+/* Hazard Stripe Decorative Bar */
+.status-bar,
+.hazard-bar {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--yellow),
+        var(--yellow) 15px,
+        var(--text) 15px,
+        var(--text) 30px
+    );
+    border: var(--border);
+    height: 24px;
     margin-bottom: 25px;
+}
+
+/* Status Header Text Overlay */
+.status-bar {
+    height: auto;
+    background: var(--text);
+    color: var(--yellow);
+    padding: 10px 18px;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
 }
 
-/* Brutalist Block Container */
-.b-box {
-    background: var(--white);
+/* Brutalist Block Container Cards */
+.b-box,
+.card,
+header,
+section {
+    background: var(--surface);
     border: var(--border);
     box-shadow: var(--shadow);
-    padding: 24px;
-    margin-bottom: 30px;
+    padding: 28px;
+    margin-bottom: 35px;
     position: relative;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-.b-tag {
-    background: var(--accent);
-    border: var(--border);
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-weight: bold;
-    font-size: 0.85rem;
-    padding: 4px 10px;
-    text-transform: uppercase;
+/* Hover effect on main sections */
+.b-box:hover,
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translate(-3px, -3px);
+}
+
+/* Top Badge Tags */
+.b-tag,
+.badge-tag {
     position: absolute;
-    top: -16px;
-    left: 16px;
+    top: -18px;
+    left: 20px;
+    background: var(--yellow);
+    color: var(--text);
+    border: var(--border);
+    font-family: var(--font-mono);
+    font-weight: 900;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Typography */
+/* Typography Hierarchy */
 h1 {
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 900;
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 7vw, 4.8rem);
     text-transform: uppercase;
-    letter-spacing: -2px;
-    line-height: 0.9;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
 }
 
 h2 {
-    font-family: var(--font-mono);
-    font-size: 1.8rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     text-transform: uppercase;
-    margin-bottom: 15px;
-    border-bottom: var(--border);
-    padding-bottom: 5px;
+    background: var(--text);
+    color: var(--surface);
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 20px;
 }
 
 h3 {
-    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
     text-transform: uppercase;
-    font-weight: 800;
+    margin-bottom: 8px;
 }
 
 p {
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .mono-text {
     font-family: var(--font-mono);
+    font-weight: bold;
 }
 
 .accent-highlight {
-    background: var(--accent);
-    padding: 0 5px;
+    background: var(--cyan);
+    color: var(--text);
+    padding: 2px 8px;
+    border: 2px solid var(--text);
 }
 
-/* Layout Grids */
+/* Grids & Columns */
 .grid-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
 }
 
 .info-sidebar {
-    border-left: 2px solid var(--main);
-    padding-left: 15px;
+    background: var(--bg);
+    border: var(--border-thin);
+    padding: 15px;
 }
 
-/* Lists & Badges */
+/* Bullet Lists */
 ul {
     list-style: none;
 }
 
 ul li {
     position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
+    padding-left: 24px;
+    margin-bottom: 16px;
 }
 
 ul li::before {
-    content: "■";
+    content: "►";
     position: absolute;
     left: 0;
-    font-size: 0.8rem;
+    color: var(--hazard-red);
+    font-size: 0.9rem;
 }
 
 .list-subtext {
     font-size: 0.85rem;
-    color: #444444;
+    color: #333333;
+    margin-top: 4px;
 }
 
+/* Skill Badges */
 .badge-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     margin-top: 15px;
 }
 
 .badge {
-    background: var(--bg);
-    border: 2px solid var(--main);
+    background: var(--yellow);
+    border: var(--border-thin);
+    box-shadow: 3px 3px 0px var(--text);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
-    padding: 4px 8px;
+    padding: 6px 12px;
+    text-transform: uppercase;
 }
 
+/* Project Cards Inside Section */
 .project-card {
-    border: 2px dashed var(--main);
-    padding: 15px;
+    background: var(--bg);
+    border: var(--border);
+    padding: 20px;
+    box-shadow: 4px 4px 0px var(--text);
 }
 
-/* Hard-Edge Interactive Buttons */
-.b-button {
+/* High-Impact Interactive Buttons */
+.b-button,
+button,
+a.btn {
     display: inline-block;
-    background: var(--accent);
+    background: var(--hazard-red);
+    color: #ffffff;
     border: var(--border);
-    box-shadow: 4px 4px 0px var(--main);
-    color: var(--main);
-    font-family: var(--font-mono);
-    font-weight: bold;
+    box-shadow: var(--shadow);
+    font-family: var(--font-heading);
+    font-size: 1rem;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     margin-top: 10px;
     text-transform: uppercase;
-    transition: all 0.1s ease;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
 }
 
-.b-button:hover {
+.b-button:hover,
+button:hover {
+    background: var(--yellow);
+    color: var(--text);
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--main);
+    box-shadow: var(--shadow-hover);
 }
 
-.b-button:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px var(--main);
+.b-button:active,
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: var(--shadow-active);
 }
 
 .b-button-sm {
     font-size: 0.8rem;
-    padding: 5px 10px;
+    padding: 6px 14px;
 }
 
+/* Footer Element */
 footer {
     text-align: center;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    margin-top: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 20px 0;
+    border-top: var(--border);
+    margin-top: 40px;
 }
