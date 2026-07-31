@@ -1,360 +1,204 @@
-/* ==========================================================================
-   CSS Variables & Design Tokens
-   ========================================================================== */
+/* =========================================================
+   BRUTALIST SYSTEM MANIFEST STYLESHEET
+   Change CSS variables in :root to customize colors/fonts
+   ========================================================= */
+
 :root {
-    --bg-body: #09090b;
-    --bg-card: #121215;
-    --bg-card-hover: #18181c;
-    --border-color: #27272a;
-    --border-hover: #3f3f46;
-
-    --text-primary: #f4f4f5;
-    --text-secondary: #a1a1aa;
-    --text-muted: #71717a;
-
-    --accent: #38bdf8;
-    --accent-glow: rgba(56, 189, 248, 0.15);
-    --badge-bg: #1e1e24;
-    --badge-text: #e4e4e7;
-
-    --status-online: #22c55e;
-
-    --font-sans:
-        "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
+    --bg: #f2f2eb;
+    --main: #000000;
+    --accent: #ccff00; /* Neon Lime/Yellow Accent */
+    --white: #ffffff;
+    --font-mono: "Courier New", Courier, monospace;
+    --font-sans: Arial, Helvetica, sans-serif;
+    --border: 4px solid var(--main);
+    --shadow: 6px 6px 0px var(--main);
 }
 
-/* ==========================================================================
-   Reset & Base Styles
-   ========================================================================== */
-*,
-*::before,
-*::after {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: var(--bg-body);
-    color: var(--text-primary);
+    background-color: var(--bg);
+    color: var(--main);
     font-family: var(--font-sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    padding: 3rem 1.25rem;
-    display: flex;
-    justify-content: center;
+    padding: 20px;
+    line-height: 1.4;
 }
 
 .container {
-    width: 100%;
-    max-width: 680px;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-    transition:
-        color 0.2s ease,
-        border-color 0.2s ease;
-}
-
-/* ==========================================================================
-   Header & Bio
-   ========================================================================== */
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-.avatar-wrapper {
-    position: relative;
-}
-
-.avatar {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--border-color);
-    background: var(--bg-card);
-}
-
-.profile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.profile-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-}
-
-.profile-handle {
+/* Status Header Bar */
+.status-bar {
+    background: var(--main);
+    color: var(--white);
     font-family: var(--font-mono);
-    font-size: 0.875rem;
-    color: var(--text-muted);
-}
-
-/* Status Pill with Pulsing Dot */
-.status-badge {
-    display: inline-flex;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(34, 197, 94, 0.08);
-    border: 1px solid rgba(34, 197, 94, 0.2);
-    color: var(--status-online);
-    padding: 0.25rem 0.65rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    width: fit-content;
-    margin-top: 0.25rem;
 }
 
-.status-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--status-online);
-    border-radius: 50%;
+/* Brutalist Block Container */
+.b-box {
+    background: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 30px;
     position: relative;
 }
 
-.status-dot::after {
-    content: "";
+.b-tag {
+    background: var(--accent);
+    border: var(--border);
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    text-transform: uppercase;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: var(--status-online);
-    animation: pulse 2s infinite ease-in-out;
+    top: -16px;
+    left: 16px;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(2.5);
-        opacity: 0;
-    }
+/* Typography */
+h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.9;
 }
 
-.bio-text {
-    color: var(--text-secondary);
+h2 {
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: var(--border);
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+p {
     font-size: 1rem;
-    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
-/* Social Links Buttons */
-.social-links {
+.mono-text {
+    font-family: var(--font-mono);
+}
+
+.accent-highlight {
+    background: var(--accent);
+    padding: 0 5px;
+}
+
+/* Layout Grids */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.info-sidebar {
+    border-left: 2px solid var(--main);
+    padding-left: 15px;
+}
+
+/* Lists & Badges */
+ul {
+    list-style: none;
+}
+
+ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+ul li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+}
+
+.list-subtext {
+    font-size: 0.85rem;
+    color: #444444;
+}
+
+.badge-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 8px;
+    margin-top: 15px;
 }
 
-.social-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.social-btn:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border-hover);
-    color: var(--text-primary);
-}
-
-.social-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-}
-
-/* ==========================================================================
-   Sections Common
-   ========================================================================== */
-.section-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.section-title::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--border-color);
-}
-
-/* ==========================================================================
-   Projects Grid
-   ========================================================================== */
-.projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.badge {
+    background: var(--bg);
+    border: 2px solid var(--main);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 8px;
 }
 
 .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    transition: all 0.2s ease;
+    border: 2px dashed var(--main);
+    padding: 15px;
 }
 
-.project-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-}
-
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.project-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.project-title svg {
-    width: 14px;
-    height: 14px;
-    opacity: 0.6;
-    transition:
-        opacity 0.2s,
-        transform 0.2s;
-}
-
-.project-card:hover .project-title svg {
-    opacity: 1;
-    transform: translate(2px, -2px);
-}
-
-.project-description {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.25rem;
-}
-
-.tag {
+/* Hard-Edge Interactive Buttons */
+.b-button {
+    display: inline-block;
+    background: var(--accent);
+    border: var(--border);
+    box-shadow: 4px 4px 0px var(--main);
+    color: var(--main);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    background: var(--badge-bg);
-    color: var(--badge-text);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
 }
 
-/* ==========================================================================
-   Writing / Blog List Layout
-   ========================================================================== */
-.posts-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+.b-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--main);
 }
 
-.post-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0.5rem 0;
-    border-bottom: 1px dashed var(--border-color);
+.b-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--main);
 }
 
-.post-item:last-child {
-    border-bottom: none;
-}
-
-.post-title {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    font-weight: 400;
-}
-
-.post-item:hover .post-title {
-    color: var(--accent);
-}
-
-.post-date {
-    font-family: var(--font-mono);
+.b-button-sm {
     font-size: 0.8rem;
-    color: var(--text-muted);
-    white-space: nowrap;
+    padding: 5px 10px;
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
 footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    text-align: center;
     font-family: var(--font-mono);
-}
-
-/* Responsive Design Adjustments */
-@media (max-width: 520px) {
-    body {
-        padding: 2rem 1rem;
-    }
-    .profile-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .post-item {
-        flex-direction: column;
-        gap: 0.2rem;
-    }
-    footer {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-start;
-    }
+    font-size: 0.8rem;
+    margin-top: 20px;
 }

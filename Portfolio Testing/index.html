@@ -3,213 +3,160 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Xaru — Developer Portfolio</title>
-
-        <!-- Fonts: Inter for UI & JetBrains Mono for Code/Tags -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-            rel="stylesheet"
-        />
-
-        <!-- External Stylesheet -->
-        <link rel="stylesheet" href="style.css" />
+        <title>MANIFEST // [YOUR NAME]</title>
+        <!-- Link to external CSS file -->
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <div class="container">
-            <!-- ================= PROFILE HEADER ================= -->
-            <header style="display: flex; flex-direction: column; gap: 1.25rem">
-                <div class="profile-header">
-                    <div class="avatar-wrapper">
-                        <img
-                            src="https://api.dicebear.com/7.x/bottts/svg?seed=xaru"
-                            alt="Avatar"
-                            class="avatar"
-                        />
-                    </div>
-                    <div class="profile-info">
-                        <h1 class="profile-name">Xaru</h1>
-                        <span class="profile-handle">@xarunoba • xaru.win</span>
-                        <div class="status-badge">
-                            <span class="status-dot"></span>
-                            <span>Building open-source tools</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- STATUS BAR HEADER -->
+            <div class="status-bar">
+                <span>[STATUS: AVAILABLE FOR HIRE]</span>
+                <span>SYS_LOG_2026.RAW</span>
+            </div>
 
-                <p class="bio-text">
-                    Software engineer focused on systems programming,
-                    high-performance backends, and clean UI engineering.
-                    Crafting fast CLI utilities and lightweight web tools in
-                    <strong>Zig</strong> and <strong>Go</strong>.
-                </p>
-
-                <!-- Social Button Links -->
-                <div class="social-links">
-                    <a
-                        href="https://github.com"
-                        target="_blank"
-                        class="social-btn"
+            <!-- HERO / ABOUT ME SECTION -->
+            <header class="b-box">
+                <span class="b-tag">01 // SUBJECT IDENTIFIER</span>
+                <h1>
+                    YOUR NAME<br /><span class="accent-highlight"
+                        >TITLE / ROLE</span
                     >
-                        <svg viewBox="0 0 24 24">
-                            <path
-                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
-                            />
-                        </svg>
-                        GitHub
-                    </a>
-                    <a href="https://x.com" target="_blank" class="social-btn">
-                        <svg viewBox="0 0 24 24">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                            />
-                        </svg>
-                        Twitter / X
-                    </a>
-                    <a href="mailto:hello@xaru.win" class="social-btn">
-                        <svg viewBox="0 0 24 24">
-                            <path
-                                d="M1.5 4.5a1.5 1.5 0 0 1 1.5-1.5h18a1.5 1.5 0 0 1 1.5 1.5v15a1.5 1.5 0 0 1-1.5 1.5H3a1.5 1.5 0 0 1-1.5-1.5V4.5zm1.8.3 8.7 6.525a.75.75 0 0 0 .9 0l8.7-6.525A.3.3 0 0 0 21 4.5H3a.3.3 0 0 0-.3.3z"
-                            />
-                        </svg>
-                        Email
-                    </a>
+                </h1>
+
+                <div style="margin-top: 20px" class="grid-2">
+                    <div>
+                        <p class="mono-text"><strong>ABOUT ME:</strong></p>
+                        <p>
+                            Brief 2-3 sentence introduction about who you are.
+                            Focus on your raw focus, philosophy, and what drives
+                            your work. Keep it straightforward and bold.
+                        </p>
+                    </div>
+                    <div class="mono-text info-sidebar">
+                        <p><strong>LOCATION:</strong> City, Country</p>
+                        <p><strong>FOCUS:</strong> Core Discipline / Tech</p>
+                        <p><strong>EMAIL:</strong> user@example.com</p>
+                        <a href="mailto:user@example.com" class="b-button"
+                            >INITIATE CONTACT</a
+                        >
+                    </div>
                 </div>
             </header>
 
-            <!-- ================= FEATURED PROJECTS ================= -->
-            <section>
-                <h2 class="section-title">Projects</h2>
-                <div class="projects-grid">
-                    <!-- Project Card 1 -->
-                    <a
-                        href="https://github.com"
-                        target="_blank"
-                        class="project-card"
-                    >
-                        <div class="project-header">
-                            <div class="project-title">
-                                env-struct.zig
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                                </svg>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Zero-allocation Zig library for parsing environment
-                            variables directly into typed Zig structs with
-                            built-in validation.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Zig</span>
-                            <span class="tag">CLI</span>
-                            <span class="tag">Systems</span>
-                        </div>
-                    </a>
+            <!-- MAIN CONTENT GRID -->
+            <div class="grid-2">
+                <!-- ACHIEVEMENTS SECTION -->
+                <section class="b-box">
+                    <span class="b-tag">02 // MILESTONES & ACHIEVEMENTS</span>
+                    <h2>ACHIEVEMENTS</h2>
+                    <ul>
+                        <li>
+                            <strong>1st Place - Local Hackathon 2025</strong>
+                            <p class="mono-text list-subtext">
+                                Built a high-contrast web app processing
+                                real-time telemetry.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>100k+ Downloads / Users</strong>
+                            <p class="mono-text list-subtext">
+                                Maintained an open-source tool used by developer
+                                teams globally.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Dean's List / Academic Excellence</strong>
+                            <p class="mono-text list-subtext">
+                                Recognized for top 5% performance in Computer
+                                Science.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
 
-                    <!-- Project Card 2 -->
-                    <a
-                        href="https://github.com"
-                        target="_blank"
-                        class="project-card"
-                    >
-                        <div class="project-header">
-                            <div class="project-title">
-                                html2pdf-go
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                                </svg>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Concurrent HTML to PDF converter package written in
-                            Go, powered by Chrome DevTools Protocol and worker
-                            pools.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Go</span>
-                            <span class="tag">Chromedp</span>
-                            <span class="tag">PDF</span>
-                        </div>
-                    </a>
+                <!-- ACTIVITIES SECTION -->
+                <section class="b-box">
+                    <span class="b-tag">03 // FIELD ACTIVITIES</span>
+                    <h2>ACTIVITIES</h2>
+                    <ul>
+                        <li>
+                            <strong>Lead Organizer @ Tech Club</strong>
+                            <p class="mono-text list-subtext">
+                                Managed bi-weekly workshops for 50+ active
+                                participants.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Open Source Contributor</strong>
+                            <p class="mono-text list-subtext">
+                                Active pull requests submitted to core web
+                                utilities.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Design & Build Sprint Mentor</strong>
+                            <p class="mono-text list-subtext">
+                                Guided junior teams in rapid prototyping
+                                techniques.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
 
-                    <!-- Project Card 3 -->
-                    <a
-                        href="https://github.com"
-                        target="_blank"
-                        class="project-card"
-                    >
-                        <div class="project-header">
-                            <div class="project-title">
-                                ccoco
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                                </svg>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Cross-platform Git hook tool that automatically
-                            swaps configuration files dynamically upon branch
-                            checkout.
+            <!-- PROJECTS & SKILLS SECTION -->
+            <section class="b-box">
+                <span class="b-tag">04 // EXECUTABLE UNITS & SKILLS</span>
+                <h2>PROJECTS & SKILLS</h2>
+
+                <!-- SKILLS SUMMARY -->
+                <div style="margin-bottom: 25px">
+                    <p class="mono-text"><strong>CORE CAPABILITIES:</strong></p>
+                    <div class="badge-list">
+                        <span class="badge">JavaScript / TS</span>
+                        <span class="badge">UI/UX Wireframing</span>
+                        <span class="badge">HTML5 / CSS3</span>
+                        <span class="badge">System Architecture</span>
+                        <span class="badge">Git / Versioning</span>
+                        <span class="badge">Rapid Prototyping</span>
+                    </div>
+                </div>
+
+                <!-- PROJECTS LIST -->
+                <div class="grid-2">
+                    <div class="project-card">
+                        <h3>PROJECT ALPHA</h3>
+                        <p class="mono-text" style="font-size: 0.85rem">
+                            [CATEGORIZATION: WEB APP]
                         </p>
-                        <div class="project-tags">
-                            <span class="tag">Go</span>
-                            <span class="tag">DevTools</span>
-                            <span class="tag">Git</span>
-                        </div>
-                    </a>
+                        <p style="margin-top: 10px">
+                            A raw description of the project. Mention the main
+                            problem solved and the execution strategy.
+                        </p>
+                        <a href="#" class="b-button b-button-sm"
+                            >VIEW SOURCE →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>PROJECT BETA</h3>
+                        <p class="mono-text" style="font-size: 0.85rem">
+                            [CATEGORIZATION: TOOLING]
+                        </p>
+                        <p style="margin-top: 10px">
+                            Another high-impact project. Highlighting
+                            minimalist, highly effective solutions to technical
+                            challenges.
+                        </p>
+                        <a href="#" class="b-button b-button-sm">LIVE DEMO →</a>
+                    </div>
                 </div>
             </section>
 
-            <!-- ================= WRITING / THOUGHTS ================= -->
-            <section>
-                <h2 class="section-title">Writing</h2>
-                <div class="posts-list">
-                    <a href="#" class="post-item">
-                        <span class="post-title"
-                            >Understanding Zero-Allocation Parsers in Zig</span
-                        >
-                        <span class="post-date">2026.04</span>
-                    </a>
-
-                    <a href="#" class="post-item">
-                        <span class="post-title"
-                            >Building a Fast Chrome DevTools Worker Pool in
-                            Go</span
-                        >
-                        <span class="post-date">2025.11</span>
-                    </a>
-
-                    <a href="#" class="post-item">
-                        <span class="post-title"
-                            >Managing Environment Configs across Git
-                            Branches</span
-                        >
-                        <span class="post-date">2025.06</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- ================= FOOTER ================= -->
+            <!-- FOOTER -->
             <footer>
-                <span>&copy; 2026 Xaru. All rights reserved.</span>
-                <span>Designed with CSS</span>
+                <p>END OF FILE // MANIFEST UPDATED MANUALLY</p>
             </footer>
         </div>
     </body>
