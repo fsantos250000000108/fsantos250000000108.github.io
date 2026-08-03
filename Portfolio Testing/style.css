@@ -1,274 +1,549 @@
-/* =========================================================
-   STYLE: INDUSTRIAL HAZARD BRUTALISM
-   Aesthetic: Heavy borders, hard offset shadows, caution hatch
-   patterns, and high-impact typography.
-   ========================================================= */
-
-:root {
-    /* Color Palette */
-    --bg: #dcdcd6; /* Raw Concrete Grey */
-    --surface: #ffffff; /* Pure White */
-    --text: #000000; /* Pitch Black */
-    --yellow: #ffea00; /* Caution Yellow */
-    --hazard-red: #ff3300; /* Alert Red */
-    --cyan: #00f0ff; /* Electric Cyan */
-
-    /* Structural Rules */
-    --border: 4px solid var(--text);
-    --border-thin: 2px solid var(--text);
-    --shadow: 7px 7px 0px var(--text);
-    --shadow-hover: 10px 10px 0px var(--text);
-    --shadow-active: 2px 2px 0px var(--text);
-
-    /* Fonts */
-    --font-heading: "Arial Black", "Impact", sans-serif;
-    --font-mono: "Courier New", Courier, monospace;
+/* ─── 02 Brutalist Form Elements — bureaucratic inspection form ── */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Barlow+Condensed:wght@400;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap");
+.br-frm {
+    --br-frm-paper: #ede8df;
+    --br-frm-dark: #0f0f0f;
+    --br-frm-red: #c8001a;
+    --br-frm-ink: #1a1a2e;
+    --br-frm-rule: #b5a99a;
+    --br-frm-yellow: #f0c000;
+    position: relative;
+    width: 100%;
+    min-height: 1180px;
+    background: var(--br-frm-paper);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
 }
-
-/* Global Reset */
-* {
+.br-frm *,
+.br-frm *::before,
+.br-frm *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: var(--font-mono);
-    padding: 24px 12px;
-    line-height: 1.5;
-}
-
-/* Main Canvas Wrapper */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-/* Hazard Stripe Decorative Bar */
-.status-bar,
-.hazard-bar {
-    background: repeating-linear-gradient(
-        45deg,
-        var(--yellow),
-        var(--yellow) 15px,
-        var(--text) 15px,
-        var(--text) 30px
+/* Ruled paper lines — was body::before; scoped to wrapper. */
+.br-frm::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 31px,
+        var(--br-frm-rule) 31px,
+        var(--br-frm-rule) 32px
     );
-    border: var(--border);
-    height: 24px;
-    margin-bottom: 25px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
 }
-
-/* Status Header Text Overlay */
-.status-bar {
-    height: auto;
-    background: var(--text);
-    color: var(--yellow);
-    padding: 10px 18px;
-    font-weight: bold;
+/* Red margin line — was body::after; scoped to wrapper. */
+.br-frm::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 64px;
+    width: 2px;
+    height: 100%;
+    background: #e8888a;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+}
+.br-frm .card {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    z-index: 1;
+}
+.br-frm .form-shell {
+    position: relative;
+    z-index: 1;
+    padding: 40px 48px 40px 90px;
+    max-width: 900px;
+}
+/* Corner stamps (form ID + rejected) — were position:fixed; now
+   position:absolute inside the wrapper so they don't escape. */
+.br-frm .corner-stamp {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    z-index: 10;
+    text-align: right;
+}
+.br-frm .corner-stamp .form-id {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #bbb;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.br-frm .corner-stamp .form-num {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--br-frm-dark);
+    line-height: 1;
+}
+.br-frm .rejected-stamp {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    border: 6px solid var(--br-frm-red);
+    color: var(--br-frm-red);
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    padding: 6px 20px;
+    transform: rotate(-18deg);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 2;
+}
+/* SECTION HEADER STAMP */
+.br-frm .section-stamp {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.br-frm .stamp-num {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--br-frm-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--br-frm-dark);
+    flex-shrink: 0;
+}
+.br-frm .stamp-title {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--br-frm-dark);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border-bottom: 4px solid var(--br-frm-dark);
+    flex: 1;
+    padding-bottom: 6px;
+}
+/* Fields block */
+.br-frm .fields-block {
+    border: 2px solid var(--br-frm-dark);
+    margin-bottom: 32px;
+    background: var(--br-frm-paper);
+}
+.br-frm .fields-block .row {
+    display: flex;
+    border-bottom: 2px solid var(--br-frm-dark);
+}
+.br-frm .fields-block .row:last-child {
+    border-bottom: none;
+}
+.br-frm .fields-block .cell {
+    flex: 1;
+    position: relative;
+    border-right: 2px solid var(--br-frm-dark);
+}
+.br-frm .fields-block .cell:last-child {
+    border-right: none;
+}
+.br-frm .fields-block .cell.wide {
+    flex: 2;
+}
+.br-frm .fields-block .cell.narrow {
+    flex: 0.5;
+}
+.br-frm .cell-label {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--br-frm-dark);
+    padding: 7px 12px 3px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.br-frm .cell-label .req {
+    color: var(--br-frm-red);
+    font-size: 14px;
+    line-height: 0;
+}
+.br-frm .cell-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: "Courier Prime", ui-monospace, monospace;
+    font-size: 15px;
+    color: var(--br-frm-ink);
+    padding: 4px 12px 10px;
+    display: block;
+}
+.br-frm .cell-input::placeholder {
+    color: #bbb;
+    font-style: italic;
+    font-size: 13px;
+}
+.br-frm .cell-input:focus {
+    background: rgba(0, 51, 170, 0.04);
+}
+/* Inline select inside the Territory cell — strip its own border so
+   it inherits the cell's grid border. */
+.br-frm .fields-block .select-wrap-inner {
+    position: relative;
+    border: none;
+    margin: 0;
+}
+.br-frm .fields-block .select-wrap-inner::after {
+    content: "▼";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    pointer-events: none;
+    color: var(--br-frm-dark);
+}
+.br-frm select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: "Courier Prime", ui-monospace, monospace;
+    font-size: 14px;
+    color: var(--br-frm-ink);
+    padding: 14px 40px 14px 14px;
+    cursor: pointer;
+}
+/* Checkboxes */
+.br-frm .check-section {
+    margin-bottom: 32px;
+}
+.br-frm .check-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 2px solid var(--br-frm-dark);
+    background: var(--br-frm-paper);
+}
+.br-frm .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-right: 2px solid var(--br-frm-dark);
+    border-bottom: 2px solid var(--br-frm-dark);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.1s;
+}
+.br-frm .check-item:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+.br-frm .check-item:nth-child(3n) {
+    border-right: none;
+}
+.br-frm .check-item:nth-child(n + 4) {
+    border-bottom: none;
+}
+.br-frm .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--br-frm-dark);
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.br-frm input[type="checkbox"] {
+    display: none;
+}
+.br-frm input[type="checkbox"]:checked + .check-box {
+    background: var(--br-frm-dark);
+}
+.br-frm input[type="checkbox"]:checked + .check-box::after {
+    content: "✗";
+    color: var(--br-frm-paper);
+    font-size: 14px;
+    line-height: 1;
+}
+.br-frm .check-label {
+    font-size: 12px;
+    color: var(--br-frm-dark);
+    letter-spacing: 0.5px;
+}
+/* Radio — priority */
+.br-frm .radio-section {
+    margin-bottom: 32px;
+}
+.br-frm .radio-row {
+    display: flex;
+    border: 2px solid var(--br-frm-dark);
+    background: var(--br-frm-paper);
+}
+.br-frm .radio-opt {
+    flex: 1;
+    position: relative;
+    border-right: 2px solid var(--br-frm-dark);
+    cursor: pointer;
+    overflow: hidden;
+}
+.br-frm .radio-opt:last-child {
+    border-right: none;
+}
+.br-frm .radio-opt input {
+    position: absolute;
+    opacity: 0;
+}
+.br-frm .radio-opt .opt-inner {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: background 0.1s;
+}
+.br-frm .radio-opt input:checked ~ .opt-inner {
+    background: var(--br-frm-dark);
+}
+.br-frm .radio-opt input:checked ~ .opt-inner .opt-code {
+    color: var(--br-frm-yellow);
+}
+.br-frm .radio-opt input:checked ~ .opt-inner .opt-name {
+    color: var(--br-frm-paper);
+}
+.br-frm .radio-opt input:checked ~ .opt-inner .opt-sub {
+    color: #888;
+}
+.br-frm .opt-code {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 600;
+}
+.br-frm .opt-name {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--br-frm-dark);
+    letter-spacing: 1px;
+}
+.br-frm .opt-sub {
+    font-size: 9px;
+    color: #999;
+    letter-spacing: 0.5px;
+}
+/* Textarea */
+.br-frm .textarea-section {
+    margin-bottom: 32px;
+}
+.br-frm .textarea-wrap {
+    border: 2px solid var(--br-frm-dark);
+    position: relative;
+    background: var(--br-frm-paper);
+}
+.br-frm .textarea-header {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--br-frm-dark);
+    background: var(--br-frm-dark);
 }
-
-/* Brutalist Block Container Cards */
-.b-box,
-.card,
-header,
-section {
-    background: var(--surface);
-    border: var(--border);
-    box-shadow: var(--shadow);
-    padding: 28px;
-    margin-bottom: 35px;
-    position: relative;
-    transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
-}
-
-/* Hover effect on main sections */
-.b-box:hover,
-.card:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translate(-3px, -3px);
-}
-
-/* Top Badge Tags */
-.b-tag,
-.badge-tag {
-    position: absolute;
-    top: -18px;
-    left: 20px;
-    background: var(--yellow);
-    color: var(--text);
-    border: var(--border);
-    font-family: var(--font-mono);
-    font-weight: 900;
-    font-size: 0.8rem;
-    padding: 4px 12px;
+.br-frm .textarea-header-label {
+    font-size: 9px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    color: var(--br-frm-paper);
+    font-weight: 600;
 }
-
-/* Typography Hierarchy */
-h1 {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 7vw, 4.8rem);
-    text-transform: uppercase;
-    line-height: 0.95;
-    letter-spacing: -1px;
-    margin-bottom: 15px;
+.br-frm .textarea-header-count {
+    font-size: 9px;
+    color: #888;
+    letter-spacing: 2px;
 }
-
-h2 {
-    font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    text-transform: uppercase;
-    background: var(--text);
-    color: var(--surface);
-    display: inline-block;
-    padding: 4px 12px;
-    margin-bottom: 20px;
+.br-frm textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: "Courier Prime", ui-monospace, monospace;
+    font-size: 14px;
+    color: var(--br-frm-ink);
+    padding: 16px 14px;
+    resize: none;
+    min-height: 90px;
+    line-height: 2;
 }
-
-h3 {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+.br-frm textarea::placeholder {
+    color: #bbb;
+    font-style: italic;
 }
-
-p {
-    font-size: 1rem;
+/* Slider */
+.br-frm .slider-section {
+    margin-bottom: 32px;
+}
+.br-frm .slider-wrap {
+    border: 2px solid var(--br-frm-dark);
+    padding: 16px 20px;
+    background: var(--br-frm-paper);
+}
+.br-frm .slider-top {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 12px;
 }
-
-.mono-text {
-    font-family: var(--font-mono);
-    font-weight: bold;
-}
-
-.accent-highlight {
-    background: var(--cyan);
-    color: var(--text);
-    padding: 2px 8px;
-    border: 2px solid var(--text);
-}
-
-/* Grids & Columns */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-}
-
-.info-sidebar {
-    background: var(--bg);
-    border: var(--border-thin);
-    padding: 15px;
-}
-
-/* Bullet Lists */
-ul {
-    list-style: none;
-}
-
-ul li {
-    position: relative;
-    padding-left: 24px;
-    margin-bottom: 16px;
-}
-
-ul li::before {
-    content: "►";
-    position: absolute;
-    left: 0;
-    color: var(--hazard-red);
-    font-size: 0.9rem;
-}
-
-.list-subtext {
-    font-size: 0.85rem;
-    color: #333333;
-    margin-top: 4px;
-}
-
-/* Skill Badges */
-.badge-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.badge {
-    background: var(--yellow);
-    border: var(--border-thin);
-    box-shadow: 3px 3px 0px var(--text);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: bold;
-    padding: 6px 12px;
+.br-frm .slider-label {
+    font-size: 10px;
+    letter-spacing: 3px;
     text-transform: uppercase;
+    font-weight: 600;
 }
-
-/* Project Cards Inside Section */
-.project-card {
-    background: var(--bg);
-    border: var(--border);
-    padding: 20px;
-    box-shadow: 4px 4px 0px var(--text);
+.br-frm .slider-val {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--br-frm-red);
+    line-height: 1;
 }
-
-/* High-Impact Interactive Buttons */
-.b-button,
-button,
-a.btn {
-    display: inline-block;
-    background: var(--hazard-red);
-    color: #ffffff;
-    border: var(--border);
-    box-shadow: var(--shadow);
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    text-decoration: none;
-    padding: 12px 24px;
-    margin-top: 10px;
-    text-transform: uppercase;
+.br-frm input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--br-frm-dark);
+    outline: none;
     cursor: pointer;
-    transition: all 0.1s ease-in-out;
+    margin-bottom: 10px;
 }
-
-.b-button:hover,
-button:hover {
-    background: var(--yellow);
-    color: var(--text);
-    transform: translate(-2px, -2px);
-    box-shadow: var(--shadow-hover);
+.br-frm input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--br-frm-red);
+    border: 3px solid var(--br-frm-dark);
+    cursor: pointer;
 }
-
-.b-button:active,
-button:active {
-    transform: translate(4px, 4px);
-    box-shadow: var(--shadow-active);
+.br-frm input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--br-frm-red);
+    border: 3px solid var(--br-frm-dark);
+    cursor: pointer;
 }
-
-.b-button-sm {
-    font-size: 0.8rem;
-    padding: 6px 14px;
+.br-frm .slider-ticks {
+    display: flex;
+    justify-content: space-between;
 }
-
-/* Footer Element */
-footer {
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: bold;
-    padding: 20px 0;
-    border-top: var(--border);
-    margin-top: 40px;
+.br-frm .tick {
+    font-size: 9px;
+    color: #999;
+    letter-spacing: 1px;
+}
+/* Submit */
+.br-frm .submit-row {
+    display: flex;
+    gap: 0;
+    border: 2px solid var(--br-frm-dark);
+    background: var(--br-frm-paper);
+}
+.br-frm .submit-note {
+    flex: 1;
+    padding: 14px 18px;
+    border-right: 2px solid var(--br-frm-dark);
+    font-size: 10px;
+    color: #888;
+    line-height: 1.8;
+    font-style: italic;
+}
+.br-frm .submit-note strong {
+    color: var(--br-frm-dark);
+    font-style: normal;
+}
+.br-frm .btn-submit {
+    background: var(--br-frm-red);
+    color: var(--br-frm-paper);
+    border: none;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 0 40px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.1s;
+}
+.br-frm .btn-submit:hover {
+    background: #9a0012;
+}
+.br-frm .btn-clear {
+    background: transparent;
+    color: var(--br-frm-dark);
+    border: none;
+    border-left: 2px solid var(--br-frm-dark);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0 20px;
+    cursor: pointer;
+}
+.br-frm .btn-clear:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 760px) {
+    .br-frm .form-shell {
+        padding: 32px 24px 40px 40px;
+    }
+    .br-frm::after {
+        left: 28px;
+    }
+    .br-frm .fields-block .row,
+    .br-frm .submit-row {
+        flex-direction: column;
+    }
+    .br-frm .fields-block .cell,
+    .br-frm .submit-note,
+    .br-frm .btn-submit,
+    .br-frm .btn-clear {
+        border-right: none;
+        border-bottom: 2px solid var(--br-frm-dark);
+    }
+    .br-frm .check-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .br-frm .radio-row {
+        flex-direction: column;
+    }
+    .br-frm .radio-opt {
+        border-right: none;
+        border-bottom: 2px solid var(--br-frm-dark);
+    }
+    .br-frm .radio-opt:last-child {
+        border-bottom: none;
+    }
+    .br-frm .corner-stamp {
+        top: 12px;
+        right: 16px;
+    }
+    .br-frm .rejected-stamp {
+        right: 20px;
+        font-size: 32px;
+        padding: 4px 14px;
+    }
 }
