@@ -36,6 +36,19 @@
                 background-color: #111111;
                 border: 3px solid #ffffff;
                 box-shadow: 10px 10px 0px #ff5500;
+                animation: windowEntrance 0.6s ease-out forwards;
+            }
+
+            /* Entrance Keyframe for Terminal Window */
+            @keyframes windowEntrance {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
             /* Titlebar with macOS/Linux Control Dots */
@@ -115,6 +128,20 @@
                 50% {
                     opacity: 0.2;
                 }
+            }
+
+            /* Scroll-Triggered Section Fade-In Class */
+            .fade-element {
+                opacity: 0;
+                transform: translateY(25px);
+                transition:
+                    opacity 0.5s ease-out,
+                    transform 0.5s ease-out;
+            }
+
+            .fade-element.visible {
+                opacity: 1;
+                transform: translateY(0);
             }
 
             /* Navigation Bar */
@@ -267,11 +294,14 @@
                 object-fit: cover;
                 border: 2px solid #ffffff;
                 cursor: pointer;
-                transition: border-color 0.2s ease;
+                transition:
+                    border-color 0.2s ease,
+                    transform 0.2s ease;
             }
 
             .card img:hover {
                 border-color: #ff5500;
+                transform: scale(1.02);
             }
 
             .card h3 {
@@ -304,11 +334,16 @@
                 font-weight: bold;
                 font-size: 0.85rem;
                 box-shadow: 3px 3px 0px #ffffff;
+                transition: transform 0.2s ease;
             }
 
-            /* 5. Orange Brutalist Lightbox Modal */
+            .skill-badge:hover {
+                transform: translateY(-2px);
+            }
+
+            /* 5. Animated Lightbox Modal (Fade In & Fade Out) */
             .modal {
-                display: none;
+                display: flex;
                 position: fixed;
                 z-index: 1000;
                 top: 0;
@@ -318,6 +353,18 @@
                 background-color: rgba(0, 0, 0, 0.93);
                 justify-content: center;
                 align-items: center;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.3s ease-in-out,
+                    visibility 0.3s ease-in-out;
+            }
+
+            .modal.show {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
             }
 
             .modal img {
@@ -325,6 +372,12 @@
                 max-height: 80vh;
                 border: 4px solid #ff5500;
                 box-shadow: 10px 10px 0px #ffffff;
+                transform: scale(0.9);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .modal.show img {
+                transform: scale(1);
             }
 
             .modal-close {
@@ -383,7 +436,7 @@
                 <hr />
 
                 <!-- SECTION 1: ABOUT ME -->
-                <section id="about">
+                <section id="about" class="fade-element">
                     <h2>// 01. About Me</h2>
                     <p>
                         Welcome to my portfolio! I am a passionate developer
@@ -417,7 +470,7 @@
                 <hr />
 
                 <!-- SECTION 2: ACHIEVEMENTS & EXPERIENCES -->
-                <section id="achievements">
+                <section id="achievements" class="fade-element">
                     <h2>// 02. Achievements & Experiences</h2>
                     <p>
                         Highlights of certifications, leadership roles, and
@@ -477,7 +530,7 @@
                 <hr />
 
                 <!-- SECTION 3: COURSE ACTIVITIES -->
-                <section id="activities">
+                <section id="activities" class="fade-element">
                     <h2>// 03. Course Activities</h2>
                     <p>
                         Classroom tasks and practical lab activities completed
@@ -530,7 +583,7 @@
                 <hr />
 
                 <!-- SECTION 4: PROJECTS & SKILLS -->
-                <section id="projects-skills">
+                <section id="projects-skills" class="fade-element">
                     <h2>// 04. Projects & Skills</h2>
 
                     <h3>Current Skillset:</h3>
@@ -583,23 +636,45 @@
             </div>
         </div>
 
-        <!-- Lightbox Modal for Full Image View -->
+        <!-- Animated Lightbox Modal Container -->
         <div id="lightboxModal" class="modal" onclick="closeLightbox()">
             <span class="modal-close">[X]</span>
             <img id="modalImage" src="" alt="Enlarged Image" />
         </div>
 
         <script>
+            // 1. Lightbox Modal Fade In / Fade Out Logic
             function openLightbox(imageSrc) {
                 const modal = document.getElementById("lightboxModal");
                 const modalImg = document.getElementById("modalImage");
-                modal.style.display = "flex";
                 modalImg.src = imageSrc;
+                modal.classList.add("show");
             }
 
             function closeLightbox() {
-                document.getElementById("lightboxModal").style.display = "none";
+                const modal = document.getElementById("lightboxModal");
+                modal.classList.remove("show");
             }
+
+            // 2. Intersection Observer for Scroll Fade-In Effects
+            document.addEventListener("DOMContentLoaded", () => {
+                const fadeElements = document.querySelectorAll(".fade-element");
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible");
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.15,
+                    },
+                );
+
+                fadeElements.forEach((el) => observer.observe(el));
+            });
         </script>
     </body>
 </html>
