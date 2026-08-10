@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portfolio Testing | Orange Brutalist</title>
+        <title>Portfolio | Orange Brutalist Terminal</title>
         <style>
             html {
                 scroll-behavior: smooth;
@@ -29,16 +29,16 @@
                 background-color: #0c0c0c;
             }
 
-            /* 2. Main Terminal Window with White Border & Orange Block Shadow */
+            /* 2. Main Terminal Window Container */
             .terminal-window {
-                max-width: 880px;
+                max-width: 920px;
                 margin: 0 auto;
                 background-color: #111111;
                 border: 3px solid #ffffff;
                 box-shadow: 10px 10px 0px #ff5500;
             }
 
-            /* Titlebar with Control Dots */
+            /* Titlebar with macOS/Linux Control Dots */
             .window-bar {
                 display: flex;
                 align-items: center;
@@ -83,7 +83,7 @@
                 padding: 35px;
             }
 
-            /* Live Status Pill (Orange Glow) */
+            /* Live Status Pill */
             .status-badge {
                 display: inline-flex;
                 align-items: center;
@@ -117,6 +117,34 @@
                 }
             }
 
+            /* Navigation Bar */
+            .nav-bar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+
+            .nav-link {
+                padding: 8px 14px;
+                background-color: #000000;
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 0.85rem;
+                border: 2px solid #ffffff;
+                box-shadow: 3px 3px 0px #ff5500;
+                transition: all 0.15s ease;
+            }
+
+            .nav-link:hover {
+                background-color: #ff5500;
+                color: #ffffff;
+                border-color: #ffffff;
+                box-shadow: 4px 4px 0px #ffffff;
+                transform: translate(-2px, -2px);
+            }
+
             /* Stark Typography */
             h1 {
                 font-family: "Arial Black", Impact, sans-serif;
@@ -130,7 +158,7 @@
             h2 {
                 font-family: "Arial Black", Impact, sans-serif;
                 text-transform: uppercase;
-                font-size: 1.7rem;
+                font-size: 1.6rem;
                 color: #ff5500;
                 border-bottom: 3px dashed #ffffff;
                 padding-bottom: 10px;
@@ -139,31 +167,37 @@
 
             p {
                 color: #dddddd;
-                font-size: 1rem;
+                font-size: 0.95rem;
                 line-height: 1.6;
+            }
+
+            hr {
+                margin: 40px 0;
+                border: 0;
+                border-top: 3px solid #333333;
             }
 
             /* 3. Orange & White Brutalist Buttons */
             .btn-group {
-                margin: 30px 0;
+                margin-top: 20px;
                 display: flex;
                 flex-wrap: wrap;
-                gap: 15px;
+                gap: 12px;
             }
 
             .btn {
                 display: inline-flex;
                 align-items: center;
-                padding: 12px 22px;
+                padding: 10px 18px;
                 background-color: #ff5500;
                 color: #ffffff;
                 text-decoration: none;
                 font-weight: 900;
-                font-size: 0.95rem;
+                font-size: 0.85rem;
                 text-transform: uppercase;
                 font-family: "Arial Black", sans-serif;
-                border: 3px solid #ffffff;
-                box-shadow: 5px 5px 0px #ffffff;
+                border: 2px solid #ffffff;
+                box-shadow: 4px 4px 0px #ffffff;
                 transition: all 0.15s ease-in-out;
             }
 
@@ -171,32 +205,26 @@
                 background-color: #ffffff;
                 color: #000000;
                 border-color: #ff5500;
-                box-shadow: 7px 7px 0px #ff5500;
-                transform: translate(-3px, -3px);
+                box-shadow: 6px 6px 0px #ff5500;
+                transform: translate(-2px, -2px);
             }
 
             .btn-secondary {
                 background-color: #111111;
                 color: #ffffff;
                 border-color: #ffffff;
-                box-shadow: 5px 5px 0px #ff5500;
+                box-shadow: 4px 4px 0px #ff5500;
             }
 
             .btn-secondary:hover {
                 background-color: #ff5500;
                 color: #ffffff;
                 border-color: #ffffff;
-                box-shadow: 7px 7px 0px #ffffff;
+                box-shadow: 6px 6px 0px #ffffff;
             }
 
-            hr {
-                margin: 35px 0;
-                border: 0;
-                border-top: 3px solid #333333;
-            }
-
-            /* 4. Achievement Gallery Cards */
-            .achievement-gallery {
+            /* 4. Cards Grid (Achievements, Activities, Projects) */
+            .card-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 22px;
@@ -208,6 +236,9 @@
                 border: 2px solid #ffffff;
                 box-shadow: 5px 5px 0px #ff5500;
                 transition: all 0.15s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
             }
 
             .card:hover {
@@ -227,6 +258,7 @@
 
             .card-content {
                 padding: 16px;
+                flex-grow: 1;
             }
 
             .card img {
@@ -244,7 +276,7 @@
 
             .card h3 {
                 font-family: "Arial Black", sans-serif;
-                font-size: 1.1rem;
+                font-size: 1.05rem;
                 color: #ffffff;
                 text-transform: uppercase;
                 margin: 12px 0 6px 0;
@@ -253,7 +285,25 @@
             .card p {
                 font-size: 0.88rem;
                 color: #cccccc;
-                margin: 0;
+                margin: 0 0 15px 0;
+            }
+
+            /* Skills Badges */
+            .skills-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .skill-badge {
+                background-color: #000000;
+                color: #ffffff;
+                border: 2px solid #ff5500;
+                padding: 6px 12px;
+                font-weight: bold;
+                font-size: 0.85rem;
+                box-shadow: 3px 3px 0px #ffffff;
             }
 
             /* 5. Orange Brutalist Lightbox Modal */
@@ -294,7 +344,7 @@
         </style>
     </head>
     <body>
-        <!-- Terminal Window Container -->
+        <!-- Main Terminal Window Container -->
         <div class="terminal-window">
             <!-- Window Title Bar -->
             <div class="window-bar">
@@ -303,72 +353,253 @@
                     <span class="dot dot-yellow"></span>
                     <span class="dot dot-green"></span>
                 </div>
-                <div class="window-title">portfolio.sh — orange_theme</div>
+                <div class="window-title">portfolio.sh — main_workspace</div>
                 <div></div>
             </div>
 
-            <!-- Main Content Area -->
+            <!-- Main Content Body -->
             <div class="terminal-body">
                 <!-- Status Pill -->
                 <div class="status-badge">
                     <span class="status-dot"></span> SYSTEM ONLINE
                 </div>
 
-                <h1>Welcome to My Portfolio</h1>
-                <p>
-                    > Workspace initialized. Browse projects, certificates, and
-                    code repositories below.
-                </p>
+                <h1>fsantos // Portfolio</h1>
 
-                <!-- Functional Orange & White Buttons -->
-                <div class="btn-group">
-                    <a href="#achievements" class="btn"
-                        >[ View Achievements ]</a
+                <!-- Section Navigation -->
+                <nav class="nav-bar">
+                    <a href="#about" class="nav-link">[ 01. ABOUT ME ]</a>
+                    <a href="#achievements" class="nav-link"
+                        >[ 02. ACHIEVEMENTS ]</a
                     >
-                    <a
-                        href="https://github.com/fsantos250000000108"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-secondary"
-                        >[ Visit GitHub ]</a
+                    <a href="#activities" class="nav-link"
+                        >[ 03. COURSE ACTIVITIES ]</a
                     >
-                </div>
+                    <a href="#projects-skills" class="nav-link"
+                        >[ 04. PROJECTS & SKILLS ]</a
+                    >
+                </nav>
 
                 <hr />
 
-                <!-- Achievements Section -->
+                <!-- SECTION 1: ABOUT ME -->
+                <section id="about">
+                    <h2>// 01. About Me</h2>
+                    <p>
+                        Welcome to my portfolio! I am a passionate developer
+                        currently building my technical skills in web
+                        development and software design. My tech journey is
+                        driven by solving real-world problems through clean
+                        code, structured logic, and modern interface aesthetics.
+                    </p>
+
+                    <!-- Social / Profile Buttons -->
+                    <div class="btn-group">
+                        <a
+                            href="https://github.com/fsantos250000000108"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn"
+                        >
+                            GitHub Profile
+                        </a>
+                        <a
+                            href="https://linkedin.com/in/your-profile"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            LinkedIn Account
+                        </a>
+                        <a
+                            href="https://facebook.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            Facebook
+                        </a>
+                        <a
+                            href="https://instagram.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            Instagram
+                        </a>
+                        <a
+                            href="https://x.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            X / Twitter
+                        </a>
+                    </div>
+                </section>
+
+                <hr />
+
+                <!-- SECTION 2: ACHIEVEMENTS & EXPERIENCES -->
                 <section id="achievements">
-                    <h2>// Achievements</h2>
-                    <div class="achievement-gallery">
-                        <!-- Card 1 -->
+                    <h2>// 02. Achievements & Experiences</h2>
+                    <p>
+                        Highlights of certifications, leadership roles, and
+                        academic milestones achieved so far.
+                    </p>
+
+                    <div class="card-grid">
                         <div class="card">
-                            <div class="card-header">achievement_01.jpg</div>
+                            <div class="card-header">certification_01.webp</div>
                             <div class="card-content">
                                 <img
                                     src="cert1.png"
-                                    alt="Achievement 1"
+                                    alt="Achievement 1 Proof"
                                     onclick="openLightbox(this.src)"
                                 />
-                                <h3>Achievement Title 1</h3>
+                                <h3>Web Dev Certificate</h3>
                                 <p>
-                                    Short description of what was accomplished.
+                                    Successfully completed foundational web
+                                    development coursework and project
+                                    evaluations.
                                 </p>
+                                <a
+                                    href="cert1.png"
+                                    target="_blank"
+                                    class="btn btn-secondary"
+                                    style="font-size: 0.75rem"
+                                    >View Proof</a
+                                >
                             </div>
                         </div>
 
-                        <!-- Card 2 -->
                         <div class="card">
-                            <div class="card-header">achievement_02.jpg</div>
+                            <div class="card-header">award_02.webp</div>
                             <div class="card-content">
                                 <img
                                     src="cert2.png"
-                                    alt="Achievement 2"
+                                    alt="Achievement 2 Proof"
                                     onclick="openLightbox(this.src)"
                                 />
-                                <h3>Achievement Title 2</h3>
+                                <h3>Leadership Role</h3>
                                 <p>
-                                    Short description of what was accomplished.
+                                    Served as student lead for tech workshops
+                                    and collaborative group initiatives.
                                 </p>
+                                <a
+                                    href="cert2.png"
+                                    target="_blank"
+                                    class="btn btn-secondary"
+                                    style="font-size: 0.75rem"
+                                    >View Proof</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr />
+
+                <!-- SECTION 3: COURSE ACTIVITIES -->
+                <section id="activities">
+                    <h2>// 03. Course Activities</h2>
+                    <p>
+                        Classroom tasks and practical lab activities completed
+                        during web development training:
+                    </p>
+
+                    <div class="card-grid">
+                        <!-- Activity 1.1 -->
+                        <div class="card">
+                            <div class="card-header">HTML Activity 1.1</div>
+                            <div class="card-content">
+                                <h3>Fashion Blog</h3>
+                                <p>
+                                    Structured a responsive fashion blog layout
+                                    using clean semantical HTML tags.
+                                </p>
+                                <a href="#" class="btn">[ Open Activity ]</a>
+                            </div>
+                        </div>
+
+                        <!-- Activity 1.2 -->
+                        <div class="card">
+                            <div class="card-header">HTML Activity 1.2</div>
+                            <div class="card-content">
+                                <h3>Wine Festival Schedule</h3>
+                                <p>
+                                    Designed an event schedule interface
+                                    organizing dates, times, and venue details.
+                                </p>
+                                <a href="#" class="btn">[ Open Activity ]</a>
+                            </div>
+                        </div>
+
+                        <!-- Activity 2.1 -->
+                        <div class="card">
+                            <div class="card-header">CSS Activity 2.1</div>
+                            <div class="card-content">
+                                <h3>Davies Burger</h3>
+                                <p>
+                                    Styled an interactive restaurant landing
+                                    page using advanced CSS selectors and
+                                    layouts.
+                                </p>
+                                <a href="#" class="btn">[ Open Activity ]</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr />
+
+                <!-- SECTION 4: PROJECTS & SKILLS -->
+                <section id="projects-skills">
+                    <h2>// 04. Projects & Skills</h2>
+
+                    <h3>Current Skillset:</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3 / Flexbox / Grid</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Git / GitHub Pages</span>
+                        <span class="skill-badge">Brutalist UI Design</span>
+                    </div>
+
+                    <h3 style="margin-top: 30px">Featured Past Projects:</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-header">project_01.sh</div>
+                            <div class="card-content">
+                                <h3>High School / Personal Project</h3>
+                                <p>
+                                    Custom software or web application developed
+                                    during personal side projects or tech
+                                    activities.
+                                </p>
+                                <a
+                                    href="https://github.com/fsantos250000000108"
+                                    target="_blank"
+                                    class="btn btn-secondary"
+                                    >Repository Link</a
+                                >
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">project_02.sh</div>
+                            <div class="card-content">
+                                <h3>Tech Exploration</h3>
+                                <p>
+                                    Exploratory application built to test custom
+                                    styling, APIs, or interactive web features.
+                                </p>
+                                <a
+                                    href="https://github.com/fsantos250000000108"
+                                    target="_blank"
+                                    class="btn btn-secondary"
+                                    >Repository Link</a
+                                >
                             </div>
                         </div>
                     </div>
@@ -376,10 +607,10 @@
             </div>
         </div>
 
-        <!-- Lightbox Modal -->
+        <!-- Lightbox Modal for Full Image View -->
         <div id="lightboxModal" class="modal" onclick="closeLightbox()">
             <span class="modal-close">[X]</span>
-            <img id="modalImage" src="" alt="Enlarged Achievement" />
+            <img id="modalImage" src="" alt="Enlarged Image" />
         </div>
 
         <script>
