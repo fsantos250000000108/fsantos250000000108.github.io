@@ -3,18 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portfolio Testing | xaru-style</title>
+        <title>Portfolio Testing | Orange Brutalist</title>
         <style>
             html {
                 scroll-behavior: smooth;
             }
 
-            /* 1. Base Setup: Dark Scanline/Grid Overlay + bg.webp */
+            /* 1. Base Setup: bg.webp + High-Contrast Dark Overlay */
             body {
                 background:
                     linear-gradient(
-                        rgba(10, 10, 10, 0.85),
-                        rgba(10, 10, 10, 0.85)
+                        rgba(12, 12, 12, 0.88),
+                        rgba(12, 12, 12, 0.88)
                     ),
                     url("bg.webp");
                 background-size: cover;
@@ -25,27 +25,27 @@
                 padding: 40px 20px;
                 min-height: 100vh;
                 font-family: "Courier New", Courier, monospace;
-                color: #e0e0e0;
-                background-color: #0a0a0a;
+                color: #ffffff;
+                background-color: #0c0c0c;
             }
 
-            /* 2. Terminal Main Window Container */
+            /* 2. Main Terminal Window with White Border & Orange Block Shadow */
             .terminal-window {
                 max-width: 880px;
                 margin: 0 auto;
-                background-color: #0d0d0d;
-                border: 2px solid #ffffff;
-                box-shadow: 8px 8px 0px #00ff66;
+                background-color: #111111;
+                border: 3px solid #ffffff;
+                box-shadow: 10px 10px 0px #ff5500;
             }
 
-            /* Window Top Bar (xaru.win macOS/Linux style) */
+            /* Titlebar with Control Dots */
             .window-bar {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 background-color: #1a1a1a;
-                padding: 10px 15px;
-                border-bottom: 2px solid #ffffff;
+                padding: 12px 16px;
+                border-bottom: 3px solid #ffffff;
             }
 
             .window-dots {
@@ -58,7 +58,7 @@
                 height: 12px;
                 border-radius: 50%;
                 display: inline-block;
-                border: 1px solid rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(0, 0, 0, 0.6);
             }
 
             .dot-red {
@@ -74,35 +74,36 @@
             .window-title {
                 font-size: 0.85rem;
                 font-weight: bold;
-                color: #888888;
+                color: #ff5500;
                 text-transform: uppercase;
-                letter-spacing: 1px;
+                letter-spacing: 1.5px;
             }
 
             .terminal-body {
                 padding: 35px;
             }
 
-            /* Live Status Indicator Pill */
+            /* Live Status Pill (Orange Glow) */
             .status-badge {
                 display: inline-flex;
                 align-items: center;
-                gap: 8px;
-                padding: 4px 10px;
+                gap: 10px;
+                padding: 6px 12px;
                 background: #000000;
-                border: 1px solid #00ff66;
-                color: #00ff66;
+                border: 2px solid #ff5500;
+                color: #ff5500;
                 font-size: 0.8rem;
                 font-weight: bold;
-                margin-bottom: 20px;
+                margin-bottom: 25px;
+                box-shadow: 3px 3px 0px #ffffff;
             }
 
             .status-dot {
                 width: 8px;
                 height: 8px;
-                background-color: #00ff66;
+                background-color: #ff5500;
                 border-radius: 50%;
-                box-shadow: 0 0 8px #00ff66;
+                box-shadow: 0 0 10px #ff5500;
                 animation: pulse 1.5s infinite;
             }
 
@@ -112,15 +113,15 @@
                     opacity: 1;
                 }
                 50% {
-                    opacity: 0.3;
+                    opacity: 0.2;
                 }
             }
 
-            /* Typography */
+            /* Stark Typography */
             h1 {
                 font-family: "Arial Black", Impact, sans-serif;
                 text-transform: uppercase;
-                font-size: 2.4rem;
+                font-size: 2.5rem;
                 color: #ffffff;
                 margin: 0 0 10px 0;
                 letter-spacing: -1px;
@@ -129,22 +130,22 @@
             h2 {
                 font-family: "Arial Black", Impact, sans-serif;
                 text-transform: uppercase;
-                font-size: 1.6rem;
-                color: #00ff66;
-                border-bottom: 2px dashed #333333;
+                font-size: 1.7rem;
+                color: #ff5500;
+                border-bottom: 3px dashed #ffffff;
                 padding-bottom: 10px;
                 margin-top: 0;
             }
 
             p {
-                color: #aaaaaa;
+                color: #dddddd;
                 font-size: 1rem;
                 line-height: 1.6;
             }
 
-            /* 3. Terminal/Brutalist Action Buttons */
+            /* 3. Orange & White Brutalist Buttons */
             .btn-group {
-                margin: 25px 0;
+                margin: 30px 0;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 15px;
@@ -153,89 +154,92 @@
             .btn {
                 display: inline-flex;
                 align-items: center;
-                padding: 12px 20px;
-                background-color: #161616;
+                padding: 12px 22px;
+                background-color: #ff5500;
                 color: #ffffff;
                 text-decoration: none;
-                font-weight: bold;
-                font-size: 0.9rem;
+                font-weight: 900;
+                font-size: 0.95rem;
                 text-transform: uppercase;
-                border: 2px solid #ffffff;
-                box-shadow: 4px 4px 0px #ffffff;
+                font-family: "Arial Black", sans-serif;
+                border: 3px solid #ffffff;
+                box-shadow: 5px 5px 0px #ffffff;
                 transition: all 0.15s ease-in-out;
             }
 
             .btn:hover {
-                background-color: #00ff66;
+                background-color: #ffffff;
                 color: #000000;
-                border-color: #00ff66;
-                box-shadow: 6px 6px 0px #ffffff;
-                transform: translate(-2px, -2px);
+                border-color: #ff5500;
+                box-shadow: 7px 7px 0px #ff5500;
+                transform: translate(-3px, -3px);
             }
 
             .btn-secondary {
-                border-color: #ff0055;
-                box-shadow: 4px 4px 0px #ff0055;
+                background-color: #111111;
+                color: #ffffff;
+                border-color: #ffffff;
+                box-shadow: 5px 5px 0px #ff5500;
             }
 
             .btn-secondary:hover {
-                background-color: #ff0055;
+                background-color: #ff5500;
                 color: #ffffff;
-                border-color: #ff0055;
-                box-shadow: 6px 6px 0px #ffffff;
+                border-color: #ffffff;
+                box-shadow: 7px 7px 0px #ffffff;
             }
 
             hr {
                 margin: 35px 0;
                 border: 0;
-                border-top: 1px solid #333333;
+                border-top: 3px solid #333333;
             }
 
-            /* 4. Achievement Cards (Mini Terminal Windows) */
+            /* 4. Achievement Gallery Cards */
             .achievement-gallery {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
+                gap: 22px;
                 margin-top: 25px;
             }
 
             .card {
-                background: #111111;
-                border: 1px solid #333333;
-                box-shadow: 4px 4px 0px #1a1a1a;
-                transition: all 0.2s ease;
+                background: #181818;
+                border: 2px solid #ffffff;
+                box-shadow: 5px 5px 0px #ff5500;
+                transition: all 0.15s ease;
             }
 
             .card:hover {
-                border-color: #00ff66;
-                box-shadow: 6px 6px 0px #00ff66;
-                transform: translate(-2px, -2px);
+                border-color: #ff5500;
+                box-shadow: 7px 7px 0px #ffffff;
+                transform: translate(-3px, -3px);
             }
 
             .card-header {
-                background: #1a1a1a;
-                padding: 6px 12px;
+                background: #222222;
+                padding: 8px 12px;
                 font-size: 0.75rem;
-                color: #888888;
-                border-bottom: 1px solid #333333;
+                color: #ff5500;
+                font-weight: bold;
+                border-bottom: 2px solid #ffffff;
             }
 
             .card-content {
-                padding: 15px;
+                padding: 16px;
             }
 
             .card img {
                 width: 100%;
                 height: 160px;
                 object-fit: cover;
-                border: 1px solid #333333;
-                filter: grayscale(20%);
-                transition: filter 0.2s ease;
+                border: 2px solid #ffffff;
                 cursor: pointer;
+                transition: border-color 0.2s ease;
             }
 
             .card img:hover {
-                filter: grayscale(0%);
+                border-color: #ff5500;
             }
 
             .card h3 {
@@ -247,11 +251,12 @@
             }
 
             .card p {
-                font-size: 0.85rem;
+                font-size: 0.88rem;
+                color: #cccccc;
                 margin: 0;
             }
 
-            /* 5. Terminal Lightbox Modal */
+            /* 5. Orange Brutalist Lightbox Modal */
             .modal {
                 display: none;
                 position: fixed;
@@ -260,7 +265,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.92);
+                background-color: rgba(0, 0, 0, 0.93);
                 justify-content: center;
                 align-items: center;
             }
@@ -268,16 +273,17 @@
             .modal img {
                 max-width: 85%;
                 max-height: 80vh;
-                border: 2px solid #00ff66;
-                box-shadow: 8px 8px 0px #ffffff;
+                border: 4px solid #ff5500;
+                box-shadow: 10px 10px 0px #ffffff;
             }
 
             .modal-close {
                 position: absolute;
                 top: 20px;
                 right: 30px;
-                font-size: 35px;
-                color: #00ff66;
+                font-size: 32px;
+                font-weight: bold;
+                color: #ff5500;
                 cursor: pointer;
                 font-family: monospace;
             }
@@ -288,7 +294,7 @@
         </style>
     </head>
     <body>
-        <!-- Main Terminal Window Container -->
+        <!-- Terminal Window Container -->
         <div class="terminal-window">
             <!-- Window Title Bar -->
             <div class="window-bar">
@@ -297,24 +303,24 @@
                     <span class="dot dot-yellow"></span>
                     <span class="dot dot-green"></span>
                 </div>
-                <div class="window-title">portfolio.sh — bash</div>
+                <div class="window-title">portfolio.sh — orange_theme</div>
                 <div></div>
             </div>
 
-            <!-- Terminal Body -->
+            <!-- Main Content Area -->
             <div class="terminal-body">
-                <!-- Status Badge -->
+                <!-- Status Pill -->
                 <div class="status-badge">
                     <span class="status-dot"></span> SYSTEM ONLINE
                 </div>
 
                 <h1>Welcome to My Portfolio</h1>
                 <p>
-                    > Loading developer workspace... Explore projects,
-                    achievements, and repositories below.
+                    > Workspace initialized. Browse projects, certificates, and
+                    code repositories below.
                 </p>
 
-                <!-- Functional Buttons -->
+                <!-- Functional Orange & White Buttons -->
                 <div class="btn-group">
                     <a href="#achievements" class="btn"
                         >[ View Achievements ]</a
@@ -324,7 +330,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn btn-secondary"
-                        >[ GitHub Profile ]</a
+                        >[ Visit GitHub ]</a
                     >
                 </div>
 
@@ -370,7 +376,7 @@
             </div>
         </div>
 
-        <!-- Lightbox Modal for Photo Preview -->
+        <!-- Lightbox Modal -->
         <div id="lightboxModal" class="modal" onclick="closeLightbox()">
             <span class="modal-close">[X]</span>
             <img id="modalImage" src="" alt="Enlarged Achievement" />
