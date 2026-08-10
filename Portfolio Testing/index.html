@@ -5,114 +5,148 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Portfolio Testing</title>
         <style>
-            /* Enable Smooth Scrolling for Anchors */
+            /* Enable Smooth Scrolling for Anchor Links */
             html {
                 scroll-behavior: smooth;
             }
 
-            /* 1. Background Setup (WebP + Contrast Overlay) */
+            /* 1. Brutalist Background & Stark Typography */
             body {
-                background-image:
-                    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url("bg.webp");
+                background-image: url("bg.webp");
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 margin: 0;
                 min-height: 100vh;
-                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                font-family: "Courier New", Courier, monospace, sans-serif;
                 color: #ffffff;
-                background-color: #121212; /* Fallback color */
+                background-color: #000000;
             }
 
-            /* Container Overlay */
+            /* Brutalist Main Container */
             .container {
-                background-color: rgba(20, 20, 20, 0.85);
-                backdrop-filter: blur(8px);
+                background-color: #121212;
                 max-width: 900px;
-                margin: 40px auto;
-                padding: 35px;
-                border-radius: 16px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                margin: 50px auto;
+                padding: 40px;
+                border: 4px solid #ffffff;
+                box-shadow: 10px 10px 0px #ffffff;
+                border-radius: 0px; /* Rigid sharp corners */
             }
 
             h1 {
+                font-family: "Arial Black", Impact, sans-serif;
+                text-transform: uppercase;
+                font-size: 2.6rem;
+                letter-spacing: -1px;
                 margin-top: 0;
-                font-size: 2.2rem;
+                color: #ffffff;
             }
 
-            /* 2. Functional Button Styling with Hover Effects */
+            h2 {
+                font-family: "Arial Black", Impact, sans-serif;
+                text-transform: uppercase;
+                font-size: 1.8rem;
+                letter-spacing: -1px;
+                border-bottom: 4px solid #ffffff;
+                padding-bottom: 8px;
+                margin-top: 0;
+            }
+
+            p {
+                font-size: 1.05rem;
+                line-height: 1.5;
+            }
+
+            /* 2. Brutalist Buttons (Bold colors, sharp offset drop-shadow) */
             .btn {
                 display: inline-block;
                 padding: 12px 24px;
-                margin: 8px 8px 8px 0;
-                background-color: #007bff;
+                margin: 10px 10px 10px 0;
+                background-color: #0055ff;
                 color: #ffffff;
                 text-decoration: none;
-                border-radius: 6px;
-                font-weight: 600;
-                transition: all 0.25s ease-in-out;
-                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-                border: none;
-                cursor: pointer;
+                font-weight: 900;
+                text-transform: uppercase;
+                font-family: "Arial Black", sans-serif;
+                letter-spacing: 1px;
+                border: 3px solid #ffffff;
+                box-shadow: 5px 5px 0px #ffffff;
+                transition: all 0.1s ease-in-out;
+                border-radius: 0px;
             }
 
             .btn:hover {
-                background-color: #0056b3;
-                transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(0, 123, 255, 0.45);
+                background-color: #ffffff;
+                color: #000000;
+                box-shadow: 8px 8px 0px #0055ff;
+                transform: translate(-3px, -3px);
+            }
+
+            .btn:active {
+                transform: translate(2px, 2px);
+                box-shadow: 2px 2px 0px #0055ff;
             }
 
             .btn-secondary {
-                background-color: #343a40;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                background-color: #ff0055;
             }
 
             .btn-secondary:hover {
-                background-color: #495057;
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+                background-color: #ffffff;
+                color: #000000;
+                box-shadow: 8px 8px 0px #ff0055;
             }
 
-            /* 3. Interactive Achievement Gallery */
+            /* Solid Divider */
+            hr {
+                margin: 40px 0;
+                border: 0;
+                border-top: 4px solid #ffffff;
+            }
+
+            /* 3. Brutalist Gallery Layout */
             .achievement-gallery {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                gap: 24px;
+                gap: 25px;
                 margin-top: 25px;
             }
 
             .card {
                 background: #1e1e1e;
-                padding: 18px;
-                border-radius: 12px;
-                text-align: center;
-                border: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 20px;
+                border: 3px solid #ffffff;
+                box-shadow: 6px 6px 0px #ffffff;
+                border-radius: 0px;
                 transition:
-                    transform 0.3s ease,
-                    box-shadow 0.3s ease;
+                    transform 0.1s ease,
+                    box-shadow 0.1s ease;
             }
 
             .card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+                transform: translate(-3px, -3px);
+                box-shadow: 9px 9px 0px #0055ff;
             }
 
             .card img {
                 width: 100%;
                 height: 180px;
                 object-fit: cover;
-                border-radius: 8px;
+                border: 2px solid #ffffff;
+                border-radius: 0px;
                 cursor: pointer;
-                transition: opacity 0.2s ease;
             }
 
-            .card img:hover {
-                opacity: 0.85;
+            .card h3 {
+                font-family: "Arial Black", sans-serif;
+                text-transform: uppercase;
+                margin-top: 15px;
+                margin-bottom: 5px;
             }
 
-            /* Lightbox Modal for Photo Preview */
+            /* Brutalist Lightbox Modal */
             .modal {
                 display: none;
                 position: fixed;
@@ -121,25 +155,32 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.9);
+                background-color: rgba(0, 0, 0, 0.95);
                 justify-content: center;
                 align-items: center;
             }
 
             .modal img {
-                max-width: 90%;
-                max-height: 85%;
-                border-radius: 8px;
-                box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+                max-width: 85%;
+                max-height: 80vh;
+                border: 4px solid #ffffff;
+                box-shadow: 10px 10px 0px #ff0055;
+                border-radius: 0px;
             }
 
             .modal-close {
                 position: absolute;
                 top: 20px;
                 right: 30px;
-                font-size: 35px;
-                color: #fff;
+                font-size: 45px;
+                font-weight: bold;
+                color: #ffffff;
                 cursor: pointer;
+                font-family: "Arial Black", sans-serif;
+            }
+
+            .modal-close:hover {
+                color: #ff0055;
             }
         </style>
     </head>
@@ -148,7 +189,7 @@
             <h1>Welcome to My Portfolio</h1>
             <p>Explore my projects and accomplishments below.</p>
 
-            <!-- Functional Buttons -->
+            <!-- Functional Brutalist Buttons -->
             <a href="#achievements" class="btn">View Achievements</a>
             <a
                 href="https://github.com/fsantos250000000108"
@@ -158,14 +199,13 @@
                 >Visit GitHub</a
             >
 
-            <hr style="margin: 40px 0; border: 0; border-top: 1px solid #444" />
+            <hr />
 
             <!-- Achievement Section -->
             <section id="achievements">
                 <h2>Achievements</h2>
                 <div class="achievement-gallery">
                     <div class="card">
-                        <!-- Click any image to trigger full screen preview -->
                         <img
                             src="cert1.png"
                             alt="Achievement 1"
@@ -187,14 +227,13 @@
             </section>
         </div>
 
-        <!-- Photo Lightbox Modal -->
+        <!-- Lightbox Modal for Full Image View -->
         <div id="lightboxModal" class="modal" onclick="closeLightbox()">
             <span class="modal-close">&times;</span>
             <img id="modalImage" src="" alt="Enlarged Achievement" />
         </div>
 
         <script>
-            // Opens image in fullscreen popup when clicked
             function openLightbox(imageSrc) {
                 const modal = document.getElementById("lightboxModal");
                 const modalImg = document.getElementById("modalImage");
@@ -202,7 +241,6 @@
                 modalImg.src = imageSrc;
             }
 
-            // Closes popup when clicked anywhere
             function closeLightbox() {
                 document.getElementById("lightboxModal").style.display = "none";
             }
