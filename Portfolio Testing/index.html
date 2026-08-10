@@ -3,389 +3,209 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Portfolio</title>
+        <title>Portfolio Testing</title>
         <style>
-            /* =========================================================
-               1. EASY EDIT VARS: Change colors & styles here
-               ========================================================= */
-            :root {
-                --bg: #f2f2eb;
-                --main: #000000;
-                --accent: #ff9f00; /* Neon Lime/Yellow */
-                --white: #ffffff;
-                --font-mono: "Courier New", Courier, monospace;
-                --font-sans: Arial, Helvetica, sans-serif;
-                --border: 4px solid var(--main);
-                --shadow: 6px 6px 0px var(--main);
+            /* Enable Smooth Scrolling for Anchors */
+            html {
+                scroll-behavior: smooth;
             }
 
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
-
+            /* 1. Background Setup (WebP + Contrast Overlay) */
             body {
-                background-color: var(--bg);
-                /* Ensure image path matches exact folder/file case in GitHub */
-                background-image: url("Portfolio Testing/bg.webp");
+                background-image:
+                    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url("bg.webp");
                 background-size: cover;
-                background-repeat: no-repeat;
                 background-position: center;
+                background-repeat: no-repeat;
                 background-attachment: fixed;
-                color: var(--main);
-                font-family: var(--font-sans);
-                padding: 20px;
-                line-height: 1.4;
+                margin: 0;
+                min-height: 100vh;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                color: #ffffff;
+                background-color: #121212; /* Fallback color */
             }
 
-            /* Brutalist Box Containers */
-            .b-box {
-                background: var(--white);
-                border: var(--border);
-                box-shadow: var(--shadow);
-                padding: 24px;
-                margin-bottom: 30px;
-                position: relative;
-            }
-
-            .b-tag {
-                background: var(--accent);
-                border: var(--border);
-                display: inline-block;
-                font-family: var(--font-mono);
-                font-weight: bold;
-                font-size: 0.85rem;
-                padding: 4px 10px;
-                text-transform: uppercase;
-                position: absolute;
-                top: -16px;
-                left: 16px;
-            }
-
-            /* Typography */
-            h1 {
-                font-size: clamp(2.5rem, 6vw, 5rem);
-                font-weight: 900;
-                text-transform: uppercase;
-                letter-spacing: -2px;
-                line-height: 0.9;
-            }
-
-            h2 {
-                font-family: var(--font-mono);
-                font-size: 1.8rem;
-                text-transform: uppercase;
-                margin-bottom: 15px;
-                border-bottom: var(--border);
-                padding-bottom: 5px;
-            }
-
-            h3 {
-                font-size: 1.2rem;
-                text-transform: uppercase;
-                font-weight: 800;
-            }
-
-            p {
-                font-size: 1rem;
-                margin-bottom: 10px;
-            }
-
-            .mono-text {
-                font-family: var(--font-mono);
-            }
-
-            /* Grid Layouts */
+            /* Container Overlay */
             .container {
-                max-width: 1000px;
-                margin: 0 auto;
+                background-color: rgba(20, 20, 20, 0.85);
+                backdrop-filter: blur(8px);
+                max-width: 900px;
+                margin: 40px auto;
+                padding: 35px;
+                border-radius: 16px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
-            .grid-2 {
+            h1 {
+                margin-top: 0;
+                font-size: 2.2rem;
+            }
+
+            /* 2. Functional Button Styling with Hover Effects */
+            .btn {
+                display: inline-block;
+                padding: 12px 24px;
+                margin: 8px 8px 8px 0;
+                background-color: #007bff;
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 6px;
+                font-weight: 600;
+                transition: all 0.25s ease-in-out;
+                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+                border: none;
+                cursor: pointer;
+            }
+
+            .btn:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0, 123, 255, 0.45);
+            }
+
+            .btn-secondary {
+                background-color: #343a40;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .btn-secondary:hover {
+                background-color: #495057;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+            }
+
+            /* 3. Interactive Achievement Gallery */
+            .achievement-gallery {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 24px;
+                margin-top: 25px;
             }
 
-            /* Header Marquee Bar */
-            .status-bar {
-                background: var(--main);
-                color: var(--white);
-                font-family: var(--font-mono);
-                padding: 8px 15px;
-                font-size: 0.9rem;
-                margin-bottom: 25px;
-                display: flex;
-                justify-content: space-between;
+            .card {
+                background: #1e1e1e;
+                padding: 18px;
+                border-radius: 12px;
+                text-align: center;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: opacity 0.2s ease;
+            }
+
+            .card img:hover {
+                opacity: 0.85;
+            }
+
+            /* Lightbox Modal for Photo Preview */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                justify-content: center;
                 align-items: center;
             }
 
-            /* List Items & Badges */
-            ul {
-                list-style: none;
+            .modal img {
+                max-width: 90%;
+                max-height: 85%;
+                border-radius: 8px;
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
             }
 
-            ul li {
-                position: relative;
-                padding-left: 20px;
-                margin-bottom: 10px;
-                font-size: 0.95rem;
-            }
-
-            ul li::before {
-                content: "■";
+            .modal-close {
                 position: absolute;
-                left: 0;
-                font-size: 0.8rem;
-            }
-
-            .badge-list {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-                margin-top: 15px;
-            }
-
-            .badge {
-                background: var(--bg);
-                border: 2px solid var(--main);
-                font-family: var(--font-mono);
-                font-size: 0.8rem;
-                font-weight: bold;
-                padding: 4px 8px;
-            }
-
-            /* Interactive Brutalist Buttons */
-            .b-button {
-                display: inline-block;
-                background: var(--accent);
-                border: var(--border);
-                box-shadow: 4px 4px 0px var(--main);
-                color: var(--main);
-                font-family: var(--font-mono);
-                font-weight: bold;
-                text-decoration: none;
-                padding: 10px 20px;
-                margin-top: 10px;
-                text-transform: uppercase;
-                transition: all 0.1s ease;
-            }
-
-            .b-button:hover {
-                transform: translate(-2px, -2px);
-                box-shadow: 6px 6px 0px var(--main);
-            }
-
-            .b-button:active {
-                transform: translate(2px, 2px);
-                box-shadow: 2px 2px 0px var(--main);
+                top: 20px;
+                right: 30px;
+                font-size: 35px;
+                color: #fff;
+                cursor: pointer;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <!-- STATUS BAR HEADER -->
-            <div class="status-bar">
-                <span>[STATUS: AVAILABLE FOR HIRE]</span>
-                <span>SYS_LOG_2026.RAW</span>
-            </div>
+            <h1>Welcome to My Portfolio</h1>
+            <p>Explore my projects and accomplishments below.</p>
 
-            <!-- HERO / ABOUT ME SECTION -->
-            <header class="b-box">
-                <span class="b-tag">01 // SUBJECT IDENTIFIER</span>
-                <h1>
-                    Floyd Santos<br /><span
-                        style="background: var(--accent); padding: 0 5px"
-                        >STUDENT</span
-                    >
-                </h1>
+            <!-- Functional Buttons -->
+            <a href="#achievements" class="btn">View Achievements</a>
+            <a
+                href="https://github.com/fsantos250000000108"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary"
+                >Visit GitHub</a
+            >
 
-                <div style="margin-top: 20px" class="grid-2">
-                    <div>
-                        <p class="mono-text"><strong>BIO:</strong></p>
-                        <p class="mono-text">
-                            <strong>
-                                I am Floyd Santos willing to learn, adapt, and
-                                have the drive to make. Not everything in life
-                                is easy nor super hard. Be Wise. Be like
-                                water.</strong
-                            >
-                        </p>
+            <hr style="margin: 40px 0; border: 0; border-top: 1px solid #444" />
+
+            <!-- Achievement Section -->
+            <section id="achievements">
+                <h2>Achievements</h2>
+                <div class="achievement-gallery">
+                    <div class="card">
+                        <!-- Click any image to trigger full screen preview -->
+                        <img
+                            src="cert1.png"
+                            alt="Achievement 1"
+                            onclick="openLightbox(this.src)"
+                        />
+                        <h3>Achievement Title 1</h3>
+                        <p>Short description of what was accomplished.</p>
                     </div>
-                    <div
-                        class="mono-text"
-                        style="
-                            border-left: 2px solid var(--main);
-                            padding-left: 15px;
-                        "
-                    >
-                        <p><strong>LOCATION:</strong> Mati City, Philippines</p>
-                        <p>
-                            <strong>FOCUS:</strong> Core Discipline / Tech /
-                            Gaming
-                        </p>
-                        <p>
-                            <strong>EMAIL:</strong>
-                            fsantos_250000000108@uic.edu.ph
-                        </p>
-                    </div>
-                </div>
-            </header>
-
-            <!-- MAIN CONTENT GRID -->
-            <div class="grid-2">
-                <!-- ACHIEVEMENTS SECTION -->
-                <section class="b-box">
-                    <span class="b-tag">02 // MILESTONES & ACHIEVEMENTS</span>
-                    <h2>ACHIEVEMENTS</h2>
-                    <ul>
-                        <li>
-                            <strong>1st Place - Local Hackathon 2025</strong>
-                            <p
-                                class="mono-text"
-                                style="font-size: 0.85rem; color: #444"
-                            >
-                                Built a high-contrast web app processing
-                                real-time telemetry.
-                            </p>
-                        </li>
-                        <li>
-                            <strong>100k+ Downloads / Users</strong>
-                            <p
-                                class="mono-text"
-                                style="font-size: 0.85rem; color: #444"
-                            >
-                                Maintained an open-source tool used by developer
-                                teams globally.
-                            </p>
-                        </li>
-                        <li>
-                            <strong>Dean's List / Academic Excellence</strong>
-                            <p
-                                class="mono-text"
-                                style="font-size: 0.85rem; color: #444"
-                            >
-                                Recognized for top 5% performance in Computer
-                                Science.
-                            </p>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- ACTIVITIES SECTION -->
-                <section class="b-box">
-                    <span class="b-tag">03 // FIELD ACTIVITIES</span>
-                    <h2>ACTIVITIES</h2>
-                    <ul>
-                        <li>
-                            <strong>Lead Organizer @ Tech Club</strong>
-                            <p
-                                class="mono-text"
-                                style="font-size: 0.85rem; color: #444"
-                            >
-                                Managed bi-weekly workshops for 50+ active
-                                participants.
-                            </p>
-                        </li>
-                        <li>
-                            <strong>Open Source Contributor</strong>
-                            <p
-                                class="mono-text"
-                                style="font-size: 0.85rem; color: #444"
-                            >
-                                Active pull requests submitted to core web
-                                utilities.
-                            </p>
-                        </li>
-                        <li>
-                            <strong>Design & Build Sprint Mentor</strong>
-                            <p
-                                class="mono-text"
-                                style="font-size: 0.85rem; color: #444"
-                            >
-                                Guided junior teams in rapid prototyping
-                                techniques.
-                            </p>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- PROJECTS & SKILLS SECTION -->
-            <section class="b-box">
-                <span class="b-tag">04 // EXECUTABLE UNITS & SKILLS</span>
-                <h2>PROJECTS & CAPABILITIES</h2>
-
-                <!-- SKILLS SUMMARY -->
-                <div style="margin-bottom: 25px">
-                    <p class="mono-text"><strong>CORE CAPABILITIES:</strong></p>
-                    <div class="badge-list">
-                        <span class="badge">JavaScript / TS</span>
-                        <span class="badge">UI/UX Wireframing</span>
-                        <span class="badge">HTML5 / CSS3</span>
-                        <span class="badge">System Architecture</span>
-                        <span class="badge">Git / Versioning</span>
-                        <span class="badge">Rapid Prototyping</span>
-                        <span class="badge">3D Modelling</span>
-                    </div>
-                </div>
-
-                <!-- PROJECTS LIST -->
-                <div class="grid-2">
-                    <div style="border: 2px dashed var(--main); padding: 15px">
-                        <h3>PROJECT ALPHA</h3>
-                        <p class="mono-text" style="font-size: 0.85rem">
-                            [CATEGORIZATION: WEB APP]
-                        </p>
-                        <p style="margin-top: 10px">
-                            A raw description of the project. Mention the main
-                            problem solved and the execution strategy.
-                        </p>
-                        <a
-                            href="#"
-                            class="b-button"
-                            style="font-size: 0.8rem; padding: 5px 10px"
-                            >VIEW SOURCE →</a
-                        >
-                    </div>
-
-                    <div style="border: 2px dashed var(--main); padding: 15px">
-                        <h3>PROJECT BETA</h3>
-                        <p class="mono-text" style="font-size: 0.85rem">
-                            [CATEGORIZATION: TOOLING]
-                        </p>
-                        <p style="margin-top: 10px">
-                            Another high-impact project. Highlighting
-                            minimalist, highly effective solutions to technical
-                            challenges.
-                        </p>
-                        <a
-                            href="#"
-                            class="b-button"
-                            style="font-size: 0.8rem; padding: 5px 10px"
-                            >LIVE DEMO →</a
-                        >
+                    <div class="card">
+                        <img
+                            src="cert2.png"
+                            alt="Achievement 2"
+                            onclick="openLightbox(this.src)"
+                        />
+                        <h3>Achievement Title 2</h3>
+                        <p>Short description of what was accomplished.</p>
                     </div>
                 </div>
             </section>
-
-            <!-- FOOTER -->
-            <footer
-                style="
-                    text-align: center;
-                    font-family: var(--font-mono);
-                    font-size: 0.8rem;
-                    margin-top: 20px;
-                "
-            >
-                <p>Copyright 2026 Floyd Santos</p>
-                <a
-                    href="mailto:fsantos_250000000108@uic.edu.ph"
-                    class="b-button"
-                    >CONTACT ME!</a
-                >
-            </footer>
         </div>
+
+        <!-- Photo Lightbox Modal -->
+        <div id="lightboxModal" class="modal" onclick="closeLightbox()">
+            <span class="modal-close">&times;</span>
+            <img id="modalImage" src="" alt="Enlarged Achievement" />
+        </div>
+
+        <script>
+            // Opens image in fullscreen popup when clicked
+            function openLightbox(imageSrc) {
+                const modal = document.getElementById("lightboxModal");
+                const modalImg = document.getElementById("modalImage");
+                modal.style.display = "flex";
+                modalImg.src = imageSrc;
+            }
+
+            // Closes popup when clicked anywhere
+            function closeLightbox() {
+                document.getElementById("lightboxModal").style.display = "none";
+            }
+        </script>
     </body>
 </html>
