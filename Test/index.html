@@ -500,7 +500,7 @@
                     </svg>
                     <h2>CLAIRE</h2>
                     <span style="font-size: 0.85rem; color: var(--green-dark)"
-                        >Lv. 99 Creative Dev</span
+                        >Lv. 99 MUSIC ENJOYER</span
                     >
                 </div>
 
@@ -511,8 +511,7 @@
                     onclick="nextDialogue()"
                 >
                     <div class="dialogue-text" id="dialogueText">
-                        "Hi there traveler! I'm Claire. Welcome to my cozy
-                        digital garden."
+                        "HEY IT ME CLAIRE."
                     </div>
                     <div class="dialogue-hint">▶ Click to talk</div>
                 </div>
@@ -695,8 +694,8 @@
                         class="inventory-slot"
                         onclick="
                             inspectItem(
-                                'HTML & CSS',
-                                'Mastery in building rustic, cozy, and responsive web layouts.',
+                                'MUSIC',
+                                'Mastery in tones and undertones',
                             )
                         "
                     >
@@ -706,8 +705,8 @@
                         class="inventory-slot"
                         onclick="
                             inspectItem(
-                                'JavaScript Magic',
-                                'Spells for adding interactivity, animations, and sound synth.',
+                                'MUSICAL NOTE MAGIC',
+                                'Spells for adding interactivity and sound synth.',
                             )
                         "
                     >
@@ -717,8 +716,8 @@
                         class="inventory-slot"
                         onclick="
                             inspectItem(
-                                'Pixel Art & Design',
-                                'Crafting soft 2D sprites, warm color palettes, and cozy aesthetics.',
+                                'ARTIST',
+                                'Art out of my curiosity and development',
                             )
                         "
                     >
@@ -729,7 +728,7 @@
                         onclick="
                             inspectItem(
                                 'Cozy Vibes',
-                                'Passive Ability: Infuses warmth and kindness into every line of code.',
+                                'Passive Ability: Infuses warmth and kindness through music',
                             )
                         "
                     >
@@ -754,18 +753,14 @@
                                 forest audio and visual chill.
                             </p>
                             <div class="quest-tags">
-                                <span class="tag">HTML/CSS</span>
-                                <span class="tag">Audio API</span>
-                                <span class="tag">Design</span>
+                                <span class="tag">MUSIC</span>
+                                <span class="tag">AUDIO</span>
+                                <span class="tag">DESIGN</span>
                             </div>
                         </div>
                         <button
                             class="pixel-btn"
-                            onclick="
-                                alert(
-                                    'Quest Completed! Opening project details...',
-                                )
-                            "
+                            onclick="alert('Quest Completed!')"
                         >
                             View Quest
                         </button>
@@ -780,17 +775,13 @@
                                 plants on desktop screens.
                             </p>
                             <div class="quest-tags">
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">Pixel Art</span>
+                                <span class="tag">ART</span>
+                                <span class="tag">TONE</span>
                             </div>
                         </div>
                         <button
                             class="pixel-btn"
-                            onclick="
-                                alert(
-                                    'Quest Completed! Opening project details...',
-                                )
-                            "
+                            onclick="alert('Quest Completed!')"
                         >
                             View Quest
                         </button>
@@ -821,8 +812,8 @@
            1. INTERACTIVE DIALOGUE SYSTEM
            ------------------------------------------------ */
             const dialogues = [
-                "Hi there traveler! I'm Claire. Welcome to my cozy digital garden.",
-                "I love crafting 2D pixel aesthetics, warm interfaces, and soothing web games.",
+                "HEY THERE IM CLAIRE.",
+                "I LOVE LISTENING TO MUSIC.",
                 "Feel free to click around my desk, water the plant, or listen to the music!",
                 "Did you know? Small steps taken consistently make beautiful journeys.",
                 "Thank you for visiting! Have a wonderful and peaceful day. ✨",
@@ -920,7 +911,7 @@
                 }
             }
 
-            function playBeepSound(freq = 320) {
+            function playBeepSound(freq = 500) {
                 try {
                     initAudio();
                     if (audioCtx.state === "suspended") {
