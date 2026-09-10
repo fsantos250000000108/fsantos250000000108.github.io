@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Claire's Cozy Corner</title>
+        <!-- Pixel Fonts from Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* ==========================================
+           1. COLOR PALETTE & GLOBAL STYLES (Desaturated Greens)
+           ========================================== */
+            :root {
+                --bg-base: #dce4d7;
+                --bg-panel: #edf1e8;
+                --bg-card: #f5f8f3;
+                --text-dark: #2c3a2b;
+                --green-primary: #7c9a72;
+                --green-dark: #4a6243;
+                --green-light: #a8be9f;
+                --green-muted: #8b9b87;
+                --accent-warm: #e8d0b5;
+                --accent-soft: #f2e7d5;
+                --pixel-border: 4px solid #2c3a2b;
+                --pixel-shadow: 4px 4px 0px #2c3a2b;
+                --pixel-shadow-sm: 2px 2px 0px #2c3a2b;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                image-rendering: pixelated;
+            }
+
+            body {
+                background-color: var(--bg-base);
+                color: var(--text-dark);
+                font-family: "VT323", monospace;
+                font-size: 22px;
+                line-height: 1.4;
+                padding: 20px;
+                min-height: 100vh;
+                background-image: radial-gradient(
+                    var(--green-muted) 1px,
+                    transparent 1px
+                );
+                background-size: 20px 20px;
+                position: relative;
+                overflow-x: hidden;
+            }
+
+            /* Container Limit */
+            .game-wrapper {
+                max-width: 900px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            /* Pixel Typography */
+            h1,
+            h2,
+            h3,
+            .pixel-title {
+                font-family: "Press Start 2P", cursive;
+                color: var(--text-dark);
+                text-transform: uppercase;
+                line-height: 1.5;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+            h2 {
+                font-size: 0.9rem;
+            }
+            h3 {
+                font-size: 0.75rem;
+            }
+
+            /* ==========================================
+           2. REUSABLE PIXEL COMPONENTS
+           ========================================== */
+            .pixel-box {
+                background: var(--bg-panel);
+                border: var(--pixel-border);
+                box-shadow: var(--pixel-shadow);
+                padding: 20px;
+                position: relative;
+            }
+
+            .pixel-btn {
+                font-family: "Press Start 2P", cursive;
+                font-size: 0.65rem;
+                background: var(--green-light);
+                color: var(--text-dark);
+                border: 3px solid var(--text-dark);
+                box-shadow: var(--pixel-shadow-sm);
+                padding: 10px 14px;
+                cursor: pointer;
+                transition:
+                    transform 0.1s,
+                    background 0.2s;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                user-select: none;
+            }
+
+            .pixel-btn:hover {
+                background: var(--green-primary);
+                color: #fff;
+            }
+
+            .pixel-btn:active {
+                transform: translate(2px, 2px);
+                box-shadow: 0px 0px 0px #2c3a2b;
+            }
+
+            /* ==========================================
+           3. HEADER & TOP HUD
+           ========================================== */
+            .hud-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 12px;
+                background: var(--bg-panel);
+                border: var(--pixel-border);
+                box-shadow: var(--pixel-shadow);
+                padding: 12px 20px;
+            }
+
+            .player-status {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .status-bar {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 0.85rem;
+            }
+
+            .heart-icon {
+                color: #d96b6b;
+                font-size: 1rem;
+            }
+
+            /* ==========================================
+           4. HERO SECTION (Claire's Room)
+           ========================================== */
+            .hero-section {
+                display: grid;
+                grid-template-columns: 220px 1fr;
+                gap: 20px;
+                align-items: center;
+            }
+
+            @media (max-width: 650px) {
+                .hero-section {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .avatar-frame {
+                background: var(--green-light);
+                border: var(--pixel-border);
+                padding: 20px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                position: relative;
+            }
+
+            .avatar-svg {
+                width: 120px;
+                height: 120px;
+            }
+
+            /* Interactive Dialogue Box */
+            .dialogue-box {
+                background: var(--accent-soft);
+                border: var(--pixel-border);
+                box-shadow: var(--pixel-shadow);
+                padding: 20px;
+                min-height: 140px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .dialogue-text {
+                font-size: 1.35rem;
+                color: var(--text-dark);
+            }
+
+            .dialogue-hint {
+                font-size: 0.85rem;
+                color: var(--green-dark);
+                text-align: right;
+                margin-top: 10px;
+                animation: pulse 1.5s infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.4;
+                }
+            }
+
+            /* ==========================================
+           5. INTERACTIVE COZY DESK (Plant & Tea)
+           ========================================== */
+            .interactive-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 20px;
+            }
+
+            .widget-card {
+                background: var(--bg-card);
+                border: var(--pixel-border);
+                box-shadow: var(--pixel-shadow-sm);
+                padding: 16px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .widget-icon {
+                width: 80px;
+                height: 80px;
+                cursor: pointer;
+                transition: transform 0.2s;
+            }
+
+            .widget-icon:hover {
+                transform: scale(1.1);
+            }
+
+            .widget-icon:active {
+                transform: scale(0.95);
+            }
+
+            /* ==========================================
+           6. INVENTORY / SKILLS
+           ========================================== */
+            .inventory-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .inventory-slot {
+                background: var(--accent-warm);
+                border: 3px solid var(--text-dark);
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                cursor: pointer;
+                position: relative;
+                transition: background 0.2s;
+            }
+
+            .inventory-slot:hover {
+                background: var(--green-light);
+            }
+
+            .slot-desc {
+                margin-top: 10px;
+                background: #fff;
+                border: 2px solid var(--text-dark);
+                padding: 8px 12px;
+                font-size: 1rem;
+                min-height: 40px;
+            }
+
+            /* ==========================================
+           7. QUESTS (PROJECTS)
+           ========================================== */
+            .quest-list {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+                margin-top: 15px;
+            }
+
+            .quest-card {
+                background: var(--bg-card);
+                border: 3px solid var(--text-dark);
+                padding: 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .quest-info h4 {
+                font-family: "Press Start 2P", cursive;
+                font-size: 0.75rem;
+                color: var(--green-dark);
+                margin-bottom: 6px;
+            }
+
+            .quest-tags {
+                display: flex;
+                gap: 6px;
+                margin-top: 6px;
+            }
+
+            .tag {
+                font-size: 0.8rem;
+                background: var(--green-light);
+                border: 1px solid var(--text-dark);
+                padding: 1px 6px;
+            }
+
+            /* ==========================================
+           8. LOVELY QUOTE SECTION
+           ========================================== */
+            .quote-section {
+                background: var(--accent-soft);
+                border: var(--pixel-border);
+                box-shadow: var(--pixel-shadow);
+                padding: 24px;
+                text-align: center;
+                position: relative;
+            }
+
+            .quote-mark {
+                font-size: 2rem;
+                color: var(--green-primary);
+                line-height: 0;
+                vertical-align: middle;
+            }
+
+            .quote-text {
+                font-size: 1.4rem;
+                font-style: italic;
+                margin: 10px 0;
+                color: var(--text-dark);
+            }
+
+            .quote-author {
+                font-family: "Press Start 2P", cursive;
+                font-size: 0.65rem;
+                color: var(--green-dark);
+            }
+
+            /* ==========================================
+           9. FLOATING LEAF PARTICLES
+           ========================================== */
+            .particle {
+                position: fixed;
+                pointer-events: none;
+                z-index: 999;
+                font-size: 1rem;
+                animation: fall linear forwards;
+            }
+
+            @keyframes fall {
+                0% {
+                    transform: translateY(-20px) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+
+            footer {
+                text-align: center;
+                font-size: 0.9rem;
+                color: var(--green-dark);
+                padding: 15px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="game-wrapper">
+            <!-- HEADER / HUD -->
+            <header class="hud-header">
+                <div>
+                    <h1>Claire.exe</h1>
+                </div>
+                <div class="player-status">
+                    <div class="status-bar">
+                        <span class="heart-icon">♥</span>
+                        <span>HP: 100/100</span>
+                    </div>
+                    <div class="status-bar">
+                        <span>🍵 COZY: MAX</span>
+                    </div>
+                    <!-- Chill Music Toggle Button -->
+                    <button
+                        class="pixel-btn"
+                        id="musicBtn"
+                        onclick="toggleMusic()"
+                    >
+                        <span id="musicIcon">🎵</span> Chill Music: OFF
+                    </button>
+                </div>
+            </header>
+
+            <!-- HERO SECTION -->
+            <section class="hero-section">
+                <!-- Claire's Pixel Avatar Container -->
+                <div class="avatar-frame">
+                    <!-- SVG Pixel Art Avatar -->
+                    <svg
+                        class="avatar-svg"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <!-- Hair -->
+                        <rect x="4" y="2" width="8" height="2" fill="#4a3728" />
+                        <rect
+                            x="3"
+                            y="4"
+                            width="10"
+                            height="2"
+                            fill="#4a3728"
+                        />
+                        <rect x="3" y="6" width="2" height="5" fill="#4a3728" />
+                        <rect
+                            x="11"
+                            y="6"
+                            width="2"
+                            height="5"
+                            fill="#4a3728"
+                        />
+                        <!-- Face -->
+                        <rect x="5" y="5" width="6" height="5" fill="#fce0d1" />
+                        <!-- Eyes -->
+                        <rect x="6" y="7" width="1" height="2" fill="#2c3a2b" />
+                        <rect x="9" y="7" width="1" height="2" fill="#2c3a2b" />
+                        <!-- Cheeks -->
+                        <rect x="5" y="8" width="1" height="1" fill="#f4a298" />
+                        <rect
+                            x="10"
+                            y="8"
+                            width="1"
+                            height="1"
+                            fill="#f4a298"
+                        />
+                        <!-- Cozy Green Sweater -->
+                        <rect
+                            x="4"
+                            y="10"
+                            width="8"
+                            height="5"
+                            fill="#7c9a72"
+                        />
+                        <rect
+                            x="3"
+                            y="11"
+                            width="1"
+                            height="4"
+                            fill="#65835b"
+                        />
+                        <rect
+                            x="12"
+                            y="11"
+                            width="1"
+                            height="4"
+                            fill="#65835b"
+                        />
+                        <rect
+                            x="7"
+                            y="10"
+                            width="2"
+                            height="2"
+                            fill="#edf1e8"
+                        />
+                    </svg>
+                    <h2>CLAIRE</h2>
+                    <span style="font-size: 0.85rem; color: var(--green-dark)"
+                        >Lv. 99 Creative Dev</span
+                    >
+                </div>
+
+                <!-- Dialogue Box -->
+                <div
+                    class="dialogue-box"
+                    id="dialogueBox"
+                    onclick="nextDialogue()"
+                >
+                    <div class="dialogue-text" id="dialogueText">
+                        "Hi there traveler! I'm Claire. Welcome to my cozy
+                        digital garden."
+                    </div>
+                    <div class="dialogue-hint">▶ Click to talk</div>
+                </div>
+            </section>
+
+            <!-- INTERACTIVE MINI CORNER -->
+            <section class="pixel-box">
+                <h2>Claire's Cozy Desk</h2>
+                <p style="margin-bottom: 15px; font-size: 1rem">
+                    Interact with the items on my desk to relax:
+                </p>
+
+                <div class="interactive-grid">
+                    <!-- Interactive Plant -->
+                    <div class="widget-card">
+                        <svg
+                            class="widget-icon"
+                            id="plantIcon"
+                            viewBox="0 0 16 16"
+                            onclick="waterPlant()"
+                        >
+                            <!-- Pot -->
+                            <rect
+                                x="5"
+                                y="10"
+                                width="6"
+                                height="5"
+                                fill="#b87d5c"
+                            />
+                            <rect
+                                x="4"
+                                y="9"
+                                width="8"
+                                height="1"
+                                fill="#9c6343"
+                            />
+                            <!-- Soil -->
+                            <rect
+                                x="5"
+                                y="9"
+                                width="6"
+                                height="1"
+                                fill="#523929"
+                            />
+                            <!-- Plant Sprouts (Dynamic) -->
+                            <rect
+                                id="leaf1"
+                                x="7"
+                                y="6"
+                                width="2"
+                                height="3"
+                                fill="#7c9a72"
+                            />
+                            <rect
+                                id="leaf2"
+                                x="5"
+                                y="5"
+                                width="2"
+                                height="2"
+                                fill="#a8be9f"
+                            />
+                            <rect
+                                id="leaf3"
+                                x="9"
+                                y="5"
+                                width="2"
+                                height="2"
+                                fill="#a8be9f"
+                            />
+                        </svg>
+                        <div>
+                            <h4 style="font-size: 0.9rem">House Plant</h4>
+                            <span
+                                id="plantStatus"
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--green-dark);
+                                "
+                                >Status: Happy</span
+                            >
+                        </div>
+                        <button class="pixel-btn" onclick="waterPlant()">
+                            💧 Water Plant
+                        </button>
+                    </div>
+
+                    <!-- Interactive Tea Cup -->
+                    <div class="widget-card">
+                        <svg
+                            class="widget-icon"
+                            id="teaIcon"
+                            viewBox="0 0 16 16"
+                            onclick="sipTea()"
+                        >
+                            <!-- Mug -->
+                            <rect
+                                x="4"
+                                y="6"
+                                width="7"
+                                height="8"
+                                fill="#edf1e8"
+                            />
+                            <rect
+                                x="4"
+                                y="6"
+                                width="7"
+                                height="1"
+                                fill="#e8d0b5"
+                            />
+                            <!-- Handle -->
+                            <rect
+                                x="11"
+                                y="7"
+                                width="2"
+                                height="5"
+                                fill="#edf1e8"
+                            />
+                            <rect
+                                x="12"
+                                y="8"
+                                width="1"
+                                height="3"
+                                fill="#dce4d7"
+                            />
+                            <!-- Tea Liquid -->
+                            <rect
+                                x="5"
+                                y="7"
+                                width="5"
+                                height="1"
+                                fill="#b8834c"
+                            />
+                            <!-- Steam Particles -->
+                            <rect
+                                id="steam1"
+                                x="5"
+                                y="3"
+                                width="1"
+                                height="2"
+                                fill="#ffffff"
+                                opacity="0.6"
+                            />
+                            <rect
+                                id="steam2"
+                                x="8"
+                                y="2"
+                                width="1"
+                                height="2"
+                                fill="#ffffff"
+                                opacity="0.6"
+                            />
+                        </svg>
+                        <div>
+                            <h4 style="font-size: 0.9rem">Warm Matcha</h4>
+                            <span
+                                id="teaStatus"
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--green-dark);
+                                "
+                                >Sips taken: 0</span
+                            >
+                        </div>
+                        <button class="pixel-btn" onclick="sipTea()">
+                            🍵 Take a Sip
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INVENTORY / SKILLS -->
+            <section class="pixel-box">
+                <h2>Claire's Backpack (Skills)</h2>
+                <p style="font-size: 0.95rem">
+                    Select an item from inventory to inspect:
+                </p>
+
+                <div class="inventory-grid">
+                    <div
+                        class="inventory-slot"
+                        onclick="
+                            inspectItem(
+                                'HTML & CSS',
+                                'Mastery in building rustic, cozy, and responsive web layouts.',
+                            )
+                        "
+                    >
+                        📜
+                    </div>
+                    <div
+                        class="inventory-slot"
+                        onclick="
+                            inspectItem(
+                                'JavaScript Magic',
+                                'Spells for adding interactivity, animations, and sound synth.',
+                            )
+                        "
+                    >
+                        🪄
+                    </div>
+                    <div
+                        class="inventory-slot"
+                        onclick="
+                            inspectItem(
+                                'Pixel Art & Design',
+                                'Crafting soft 2D sprites, warm color palettes, and cozy aesthetics.',
+                            )
+                        "
+                    >
+                        🎨
+                    </div>
+                    <div
+                        class="inventory-slot"
+                        onclick="
+                            inspectItem(
+                                'Cozy Vibes',
+                                'Passive Ability: Infuses warmth and kindness into every line of code.',
+                            )
+                        "
+                    >
+                        🌿
+                    </div>
+                </div>
+                <div class="slot-desc" id="inventoryDesc">
+                    💡 Click any slot above to examine Claire's stats.
+                </div>
+            </section>
+
+            <!-- QUESTS / PROJECTS -->
+            <section class="pixel-box">
+                <h2>Completed Quests (Projects)</h2>
+                <div class="quest-list">
+                    <!-- Quest 1 -->
+                    <div class="quest-card">
+                        <div class="quest-info">
+                            <h4>Quest 01: The Whispering Woods Website</h4>
+                            <p style="font-size: 0.95rem">
+                                An interactive storybook site designed for soft
+                                forest audio and visual chill.
+                            </p>
+                            <div class="quest-tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">Audio API</span>
+                                <span class="tag">Design</span>
+                            </div>
+                        </div>
+                        <button
+                            class="pixel-btn"
+                            onclick="
+                                alert(
+                                    'Quest Completed! Opening project details...',
+                                )
+                            "
+                        >
+                            View Quest
+                        </button>
+                    </div>
+
+                    <!-- Quest 2 -->
+                    <div class="quest-card">
+                        <div class="quest-info">
+                            <h4>Quest 02: Cozy Garden Pixel Engine</h4>
+                            <p style="font-size: 0.95rem">
+                                A lightweight JS widget for growing virtual
+                                plants on desktop screens.
+                            </p>
+                            <div class="quest-tags">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Pixel Art</span>
+                            </div>
+                        </div>
+                        <button
+                            class="pixel-btn"
+                            onclick="
+                                alert(
+                                    'Quest Completed! Opening project details...',
+                                )
+                            "
+                        >
+                            View Quest
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LOVELY QUOTE SECTION -->
+            <section class="quote-section">
+                <span class="quote-mark">“</span>
+                <div class="quote-text">
+                    "Even the smallest seed grows into a magnificent tree under
+                    gentle sunlight. Take your time, grow at your own rhythm,
+                    and remember to rest along the way."
+                </div>
+                <div class="quote-author">— COZY THOUGHT OF THE DAY</div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer>Crafted with 🍵 & 💚 by Claire • 2026 Cozy Corner</footer>
+        </div>
+
+        <!-- ==========================================
+       JAVASCRIPT LOGIC
+       ========================================== -->
+        <script>
+            /* ------------------------------------------------
+           1. INTERACTIVE DIALOGUE SYSTEM
+           ------------------------------------------------ */
+            const dialogues = [
+                "Hi there traveler! I'm Claire. Welcome to my cozy digital garden.",
+                "I love crafting 2D pixel aesthetics, warm interfaces, and soothing web games.",
+                "Feel free to click around my desk, water the plant, or listen to the music!",
+                "Did you know? Small steps taken consistently make beautiful journeys.",
+                "Thank you for visiting! Have a wonderful and peaceful day. ✨",
+            ];
+            let dialogueIndex = 0;
+
+            function nextDialogue() {
+                dialogueIndex = (dialogueIndex + 1) % dialogues.length;
+                const textElem = document.getElementById("dialogueText");
+                textElem.style.opacity = 0;
+                setTimeout(() => {
+                    textElem.innerText = `"${dialogues[dialogueIndex]}"`;
+                    textElem.style.opacity = 1;
+                }, 150);
+                playBeepSound();
+            }
+
+            /* ------------------------------------------------
+           2. DESK INTERACTIVES (Plant & Tea)
+           ------------------------------------------------ */
+            let waterCount = 0;
+            function waterPlant() {
+                waterCount++;
+                const status = document.getElementById("plantStatus");
+                const leaf1 = document.getElementById("leaf1");
+                const leaf2 = document.getElementById("leaf2");
+                const leaf3 = document.getElementById("leaf3");
+
+                if (waterCount === 1) {
+                    status.innerText = "Status: Hydrated 🌱";
+                    leaf2.setAttribute("fill", "#7c9a72");
+                } else if (waterCount === 3) {
+                    status.innerText = "Status: Blooming! 🌸";
+                    leaf3.setAttribute("fill", "#f2b5d4");
+                } else if (waterCount > 5) {
+                    status.innerText = "Status: Overflowing with Love! ✨";
+                }
+
+                spawnParticle("🍃");
+                playBeepSound(523.25); // C5 note
+            }
+
+            let teaCount = 0;
+            function sipTea() {
+                teaCount++;
+                document.getElementById("teaStatus").innerText =
+                    `Sips taken: ${teaCount}`;
+                spawnParticle("🍵");
+                playBeepSound(659.25); // E5 note
+            }
+
+            /* ------------------------------------------------
+           3. INVENTORY INSPECTOR
+           ------------------------------------------------ */
+            function inspectItem(title, desc) {
+                const descBox = document.getElementById("inventoryDesc");
+                descBox.innerHTML = `<strong>[ ${title} ]</strong> : ${desc}`;
+                playBeepSound(440);
+            }
+
+            /* ------------------------------------------------
+           4. PARTICLE GENERATOR (Leaves & Hearts)
+           ------------------------------------------------ */
+            function spawnParticle(symbol) {
+                const particle = document.createElement("div");
+                particle.className = "particle";
+                particle.innerText = symbol;
+                particle.style.left = Math.random() * 80 + 10 + "vw";
+                particle.style.animationDuration = Math.random() * 2 + 3 + "s";
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 4000);
+            }
+
+            // Periodically drop gentle falling leaves
+            setInterval(() => {
+                spawnParticle("🌿");
+            }, 5000);
+
+            /* ------------------------------------------------
+           5. WEB AUDIO API CHILL MUSIC & SOUND SYNTHESIZER
+           (Generates procedural cozy chiptune music)
+           ------------------------------------------------ */
+            let audioCtx = null;
+            let isPlaying = false;
+            let musicInterval = null;
+
+            function initAudio() {
+                if (!audioCtx) {
+                    audioCtx = new (
+                        window.AudioContext || window.webkitAudioContext
+                    )();
+                }
+            }
+
+            function playBeepSound(freq = 320) {
+                try {
+                    initAudio();
+                    if (audioCtx.state === "suspended") {
+                        audioCtx.resume();
+                    }
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = "sine";
+                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(
+                        0.001,
+                        audioCtx.currentTime + 0.2,
+                    );
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.2);
+                } catch (e) {
+                    // Audio fallback if user hasn't interacted
+                }
+            }
+
+            // Procedural pentatonic cozy melody loop
+            const pentatonicScale = [
+                261.63, 293.66, 329.63, 392.0, 440.0, 523.25,
+            ]; // C4, D4, E4, G4, A4, C5
+            let noteStep = 0;
+
+            function playCozyNote() {
+                if (!isPlaying) return;
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                // Alternate soft triangle & sine waves for lofi sound
+                osc.type = noteStep % 2 === 0 ? "triangle" : "sine";
+
+                // Choose warm gentle note
+                const noteIndex = Math.floor(
+                    Math.random() * pentatonicScale.length,
+                );
+                osc.frequency.setValueAtTime(
+                    pentatonicScale[noteIndex],
+                    audioCtx.currentTime,
+                );
+
+                // Soft envelope
+                gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(
+                    0.04,
+                    audioCtx.currentTime + 0.1,
+                );
+                gain.gain.exponentialRampToValueAtTime(
+                    0.0001,
+                    audioCtx.currentTime + 1.2,
+                );
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.2);
+
+                noteStep++;
+            }
+
+            function toggleMusic() {
+                initAudio();
+                if (audioCtx.state === "suspended") {
+                    audioCtx.resume();
+                }
+
+                const btn = document.getElementById("musicBtn");
+                const icon = document.getElementById("musicIcon");
+
+                if (!isPlaying) {
+                    isPlaying = true;
+                    btn.classList.add("active");
+                    btn.innerHTML = `<span id="musicIcon">🎶</span> Chill Music: ON`;
+                    musicInterval = setInterval(playCozyNote, 700); // Gentle slow tempo
+                } else {
+                    isPlaying = false;
+                    clearInterval(musicInterval);
+                    btn.innerHTML = `<span id="musicIcon">🎵</span> Chill Music: OFF`;
+                }
+            }
+        </script>
+    </body>
+</html>
