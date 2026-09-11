@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Claire's Birthday Corner</title>
+        <title>Claire's Birthday Bash</title>
         <!-- Pixel Fonts from Google Fonts -->
         <link
             href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
@@ -421,7 +421,7 @@
                         id="musicBtn"
                         onclick="toggleMusic()"
                     >
-                        <span id="musicIcon">🎵</span> Party Tune: OFF
+                        <span id="musicIcon">🎵</span> Upbeat Tune: OFF
                     </button>
                 </div>
             </header>
@@ -595,7 +595,7 @@
                         </button>
                     </div>
 
-                    <!-- Interactive Party Drink / Cupcake -->
+                    <!-- Interactive Party Cupcake -->
                     <div class="widget-card">
                         <svg
                             class="widget-icon"
@@ -880,10 +880,10 @@
             // Periodically drop gentle balloons and confetti
             setInterval(() => {
                 spawnParticle();
-            }, 4000);
+            }, 3000);
 
             /* ------------------------------------------------
-           5. WEB AUDIO API PARTY TUNE SYNTHESIZER
+           5. WEB AUDIO API UPBEAT BIRTHDAY SYNTHESIZER
            ------------------------------------------------ */
             let audioCtx = null;
             let isPlaying = false;
@@ -924,45 +924,65 @@
                 }
             }
 
-            // Festive melody notes
-            const festiveScale = [
-                261.63, 293.66, 329.63, 349.23, 392.0, 440.0, 523.25,
-            ]; // C4, D4, E4, F4, G4, A4, C5
-            let noteStep = 0;
+            // Upbeat Happy Birthday Melodic Sequence & Arpeggios
+            const birthdayTune = [
+                523.25, 523.25, 587.33, 523.25, 698.46, 659.25, 523.25, 523.25,
+                587.33, 523.25, 783.99, 698.46, 523.25, 523.25, 1046.5, 880.0,
+                698.46, 659.25, 587.33, 932.33, 932.33, 880.0, 698.46, 783.99,
+                698.46,
+            ];
+            let noteIndex = 0;
 
-            function playCozyNote() {
+            function playPartyNote() {
                 if (!isPlaying) return;
 
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
 
-                osc.type = noteStep % 2 === 0 ? "triangle" : "sine";
+                // Punchy synth wave blend (Square + Triangle)
+                osc.type = noteIndex % 3 === 0 ? "square" : "triangle";
 
-                const noteIndex = Math.floor(
-                    Math.random() * festiveScale.length,
-                );
-                osc.frequency.setValueAtTime(
-                    festiveScale[noteIndex],
-                    audioCtx.currentTime,
-                );
+                const freq = birthdayTune[noteIndex % birthdayTune.length];
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-                gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+                // Snappy, upbeat attack & short decay
+                gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
                 gain.gain.linearRampToValueAtTime(
                     0.04,
-                    audioCtx.currentTime + 0.1,
+                    audioCtx.currentTime + 0.02,
                 );
                 gain.gain.exponentialRampToValueAtTime(
-                    0.0001,
-                    audioCtx.currentTime + 1.2,
+                    0.001,
+                    audioCtx.currentTime + 0.2,
                 );
 
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
 
                 osc.start();
-                osc.stop(audioCtx.currentTime + 1.2);
+                osc.stop(audioCtx.currentTime + 0.22);
 
-                noteStep++;
+                // Rhythmic Bass Pulse
+                if (noteIndex % 2 === 0) {
+                    const bassOsc = audioCtx.createOscillator();
+                    const bassGain = audioCtx.createGain();
+                    bassOsc.type = "triangle";
+                    bassOsc.frequency.setValueAtTime(
+                        freq / 4,
+                        audioCtx.currentTime,
+                    );
+                    bassGain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+                    bassGain.gain.exponentialRampToValueAtTime(
+                        0.001,
+                        audioCtx.currentTime + 0.18,
+                    );
+                    bassOsc.connect(bassGain);
+                    bassGain.connect(audioCtx.destination);
+                    bassOsc.start();
+                    bassOsc.stop(audioCtx.currentTime + 0.2);
+                }
+
+                noteIndex++;
             }
 
             function toggleMusic() {
@@ -976,12 +996,13 @@
                 if (!isPlaying) {
                     isPlaying = true;
                     btn.classList.add("active");
-                    btn.innerHTML = `<span id="musicIcon">🎶</span> Party Tune: ON`;
-                    musicInterval = setInterval(playCozyNote, 600);
+                    btn.innerHTML = `<span id="musicIcon">🎶</span> Upbeat Tune: ON`;
+                    // Upbeat fast tempo (240ms interval)
+                    musicInterval = setInterval(playPartyNote, 240);
                 } else {
                     isPlaying = false;
                     clearInterval(musicInterval);
-                    btn.innerHTML = `<span id="musicIcon">🎵</span> Party Tune: OFF`;
+                    btn.innerHTML = `<span id="musicIcon">🎵</span> Upbeat Tune: OFF`;
                 }
             }
         </script>
