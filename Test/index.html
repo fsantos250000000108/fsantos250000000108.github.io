@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Claire's Cozy Corner</title>
+        <title>Claire's Birthday Corner</title>
         <!-- Pixel Fonts from Google Fonts -->
         <link
             href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
@@ -11,22 +11,22 @@
         />
         <style>
             /* ==========================================
-           1. COLOR PALETTE & GLOBAL STYLES (Desaturated Greens)
+           1. COLOR PALETTE & GLOBAL STYLES (Birthday Pastels)
            ========================================== */
             :root {
-                --bg-base: #dce4d7;
-                --bg-panel: #edf1e8;
-                --bg-card: #f5f8f3;
-                --text-dark: #2c3a2b;
-                --green-primary: #7c9a72;
-                --green-dark: #4a6243;
-                --green-light: #a8be9f;
-                --green-muted: #8b9b87;
-                --accent-warm: #e8d0b5;
-                --accent-soft: #f2e7d5;
-                --pixel-border: 4px solid #2c3a2b;
-                --pixel-shadow: 4px 4px 0px #2c3a2b;
-                --pixel-shadow-sm: 2px 2px 0px #2c3a2b;
+                --bg-base: #fcedf2;
+                --bg-panel: #fff5f8;
+                --bg-card: #ffffff;
+                --text-dark: #3a2b32;
+                --green-primary: #ff85a2;
+                --green-dark: #a84367;
+                --green-light: #ffc2d1;
+                --green-muted: #e8a5b8;
+                --accent-warm: #ffe5ec;
+                --accent-soft: #fff0f5;
+                --pixel-border: 4px solid #3a2b32;
+                --pixel-shadow: 4px 4px 0px #3a2b32;
+                --pixel-shadow-sm: 2px 2px 0px #3a2b32;
             }
 
             * {
@@ -119,7 +119,7 @@
 
             .pixel-btn:active {
                 transform: translate(2px, 2px);
-                box-shadow: 0px 0px 0px #2c3a2b;
+                box-shadow: 0px 0px 0px #3a2b32;
             }
 
             /* ==========================================
@@ -151,12 +151,12 @@
             }
 
             .heart-icon {
-                color: #d96b6b;
+                color: #ff4d6d;
                 font-size: 1rem;
             }
 
             /* ==========================================
-           4. HERO SECTION (Claire's Room)
+           4. HERO SECTION (Claire's Party Room)
            ========================================== */
             .hero-section {
                 display: grid;
@@ -226,7 +226,7 @@
             }
 
             /* ==========================================
-           5. INTERACTIVE COZY DESK (Plant & Tea)
+           5. INTERACTIVE PARTY TABLE (Cake & Cupcake)
            ========================================== */
             .interactive-grid {
                 display: grid;
@@ -371,7 +371,7 @@
             }
 
             /* ==========================================
-           9. FLOATING LEAF PARTICLES
+           9. FLOATING PARTY PARTICLES
            ========================================== */
             .particle {
                 position: fixed;
@@ -405,7 +405,7 @@
             <!-- HEADER / HUD -->
             <header class="hud-header">
                 <div>
-                    <h1>Claire.exe</h1>
+                    <h1>Claire.exe 🎂</h1>
                 </div>
                 <div class="player-status">
                     <div class="status-bar">
@@ -413,15 +413,15 @@
                         <span>HP: 100/100</span>
                     </div>
                     <div class="status-bar">
-                        <span>🍵 COZY: MAX</span>
+                        <span>🎉 PARTY: MAX</span>
                     </div>
-                    <!-- Chill Music Toggle Button -->
+                    <!-- Party Music Toggle Button -->
                     <button
                         class="pixel-btn"
                         id="musicBtn"
                         onclick="toggleMusic()"
                     >
-                        <span id="musicIcon">🎵</span> Chill Music: OFF
+                        <span id="musicIcon">🎵</span> Party Tune: OFF
                     </button>
                 </div>
             </header>
@@ -430,15 +430,19 @@
             <section class="hero-section">
                 <!-- Claire's Pixel Avatar Container -->
                 <div class="avatar-frame">
-                    <!-- SVG Pixel Art Avatar -->
+                    <!-- SVG Pixel Art Avatar with Party Hat -->
                     <svg
                         class="avatar-svg"
                         viewBox="0 0 16 16"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
+                        <!-- Party Hat Pom-Pom & Cone -->
+                        <rect x="7" y="0" width="2" height="1" fill="#ffea00" />
+                        <rect x="7" y="1" width="2" height="1" fill="#ff4d6d" />
+                        <rect x="6" y="2" width="4" height="1" fill="#ff85a2" />
                         <!-- Hair -->
-                        <rect x="4" y="2" width="8" height="2" fill="#4a3728" />
+                        <rect x="4" y="3" width="8" height="1" fill="#4a3728" />
                         <rect
                             x="3"
                             y="4"
@@ -457,50 +461,50 @@
                         <!-- Face -->
                         <rect x="5" y="5" width="6" height="5" fill="#fce0d1" />
                         <!-- Eyes -->
-                        <rect x="6" y="7" width="1" height="2" fill="#2c3a2b" />
-                        <rect x="9" y="7" width="1" height="2" fill="#2c3a2b" />
+                        <rect x="6" y="7" width="1" height="2" fill="#3a2b32" />
+                        <rect x="9" y="7" width="1" height="2" fill="#3a2b32" />
                         <!-- Cheeks -->
-                        <rect x="5" y="8" width="1" height="1" fill="#f4a298" />
+                        <rect x="5" y="8" width="1" height="1" fill="#ff85a2" />
                         <rect
                             x="10"
                             y="8"
                             width="1"
                             height="1"
-                            fill="#f4a298"
+                            fill="#ff85a2"
                         />
-                        <!-- Cozy Green Sweater -->
+                        <!-- Birthday Sweater -->
                         <rect
                             x="4"
                             y="10"
                             width="8"
                             height="5"
-                            fill="#7c9a72"
+                            fill="#ff85a2"
                         />
                         <rect
                             x="3"
                             y="11"
                             width="1"
                             height="4"
-                            fill="#65835b"
+                            fill="#a84367"
                         />
                         <rect
                             x="12"
                             y="11"
                             width="1"
                             height="4"
-                            fill="#65835b"
+                            fill="#a84367"
                         />
                         <rect
                             x="7"
                             y="10"
                             width="2"
                             height="2"
-                            fill="#edf1e8"
+                            fill="#fff5f8"
                         />
                     </svg>
                     <h2>CLAIRE</h2>
                     <span style="font-size: 0.85rem; color: var(--green-dark)"
-                        >Lv. 99 MUSIC ENJOYER</span
+                        >Lv. +1 BIRTHDAY GIRL 🎉</span
                     >
                 </div>
 
@@ -511,172 +515,148 @@
                     onclick="nextDialogue()"
                 >
                     <div class="dialogue-text" id="dialogueText">
-                        "HEY IT ME CLAIRE."
+                        "WELCOME TO MY BIRTHDAY PARTY!"
                     </div>
-                    <div class="dialogue-hint">▶ Click to talk</div>
+                    <div class="dialogue-hint">▶ Click to celebrate</div>
                 </div>
             </section>
 
             <!-- INTERACTIVE MINI CORNER -->
             <section class="pixel-box">
-                <h2>Claire's Cozy Desk</h2>
+                <h2>Claire's Birthday Table</h2>
                 <p style="margin-bottom: 15px; font-size: 1rem">
-                    Interact with the items on my desk to relax:
+                    Interact with the treats on the table:
                 </p>
 
                 <div class="interactive-grid">
-                    <!-- Interactive Plant -->
+                    <!-- Interactive Cake -->
                     <div class="widget-card">
                         <svg
                             class="widget-icon"
-                            id="plantIcon"
+                            id="cakeIcon"
                             viewBox="0 0 16 16"
-                            onclick="waterPlant()"
+                            onclick="blowCandles()"
                         >
-                            <!-- Pot -->
+                            <!-- Plate -->
                             <rect
-                                x="5"
-                                y="10"
-                                width="6"
-                                height="5"
-                                fill="#b87d5c"
+                                x="2"
+                                y="13"
+                                width="12"
+                                height="2"
+                                fill="#fff5f8"
                             />
+                            <!-- Cake Base -->
                             <rect
-                                x="4"
+                                x="3"
                                 y="9"
-                                width="8"
-                                height="1"
-                                fill="#9c6343"
+                                width="10"
+                                height="4"
+                                fill="#a84367"
                             />
-                            <!-- Soil -->
+                            <!-- Frosting -->
                             <rect
-                                x="5"
-                                y="9"
-                                width="6"
-                                height="1"
-                                fill="#523929"
+                                x="3"
+                                y="8"
+                                width="10"
+                                height="2"
+                                fill="#ffc2d1"
                             />
-                            <!-- Plant Sprouts (Dynamic) -->
+                            <!-- Candle -->
                             <rect
-                                id="leaf1"
                                 x="7"
-                                y="6"
+                                y="5"
                                 width="2"
                                 height="3"
-                                fill="#7c9a72"
+                                fill="#ffffff"
                             />
+                            <!-- Flame -->
                             <rect
-                                id="leaf2"
-                                x="5"
-                                y="5"
+                                id="flame"
+                                x="7"
+                                y="3"
                                 width="2"
                                 height="2"
-                                fill="#a8be9f"
-                            />
-                            <rect
-                                id="leaf3"
-                                x="9"
-                                y="5"
-                                width="2"
-                                height="2"
-                                fill="#a8be9f"
+                                fill="#ffea00"
                             />
                         </svg>
                         <div>
-                            <h4 style="font-size: 0.9rem">House Plant</h4>
+                            <h4 style="font-size: 0.9rem">Birthday Cake</h4>
                             <span
-                                id="plantStatus"
+                                id="cakeStatus"
                                 style="
                                     font-size: 0.9rem;
                                     color: var(--green-dark);
                                 "
-                                >Status: Happy</span
+                                >Status: Lit 🕯️</span
                             >
                         </div>
-                        <button class="pixel-btn" onclick="waterPlant()">
-                            💧 Water Plant
+                        <button class="pixel-btn" onclick="blowCandles()">
+                            🎂 Blow Candle
                         </button>
                     </div>
 
-                    <!-- Interactive Tea Cup -->
+                    <!-- Interactive Party Drink / Cupcake -->
                     <div class="widget-card">
                         <svg
                             class="widget-icon"
                             id="teaIcon"
                             viewBox="0 0 16 16"
-                            onclick="sipTea()"
+                            onclick="eatCupcake()"
                         >
-                            <!-- Mug -->
+                            <!-- Cupcake Wrapper -->
                             <rect
-                                x="4"
-                                y="6"
-                                width="7"
-                                height="8"
-                                fill="#edf1e8"
-                            />
-                            <rect
-                                x="4"
-                                y="6"
-                                width="7"
-                                height="1"
-                                fill="#e8d0b5"
-                            />
-                            <!-- Handle -->
-                            <rect
-                                x="11"
-                                y="7"
-                                width="2"
+                                x="5"
+                                y="9"
+                                width="6"
                                 height="5"
-                                fill="#edf1e8"
+                                fill="#ff85a2"
                             />
+                            <!-- Frosting Top -->
                             <rect
-                                x="12"
-                                y="8"
-                                width="1"
+                                x="4"
+                                y="6"
+                                width="8"
                                 height="3"
-                                fill="#dce4d7"
+                                fill="#fff5f8"
                             />
-                            <!-- Tea Liquid -->
+                            <!-- Cherry -->
+                            <rect
+                                id="cherry"
+                                x="7"
+                                y="4"
+                                width="2"
+                                height="2"
+                                fill="#ff4d6d"
+                            />
+                            <!-- Sprinkles -->
                             <rect
                                 x="5"
                                 y="7"
-                                width="5"
+                                width="1"
                                 height="1"
-                                fill="#b8834c"
-                            />
-                            <!-- Steam Particles -->
-                            <rect
-                                id="steam1"
-                                x="5"
-                                y="3"
-                                width="1"
-                                height="2"
-                                fill="#ffffff"
-                                opacity="0.6"
+                                fill="#ffea00"
                             />
                             <rect
-                                id="steam2"
-                                x="8"
-                                y="2"
+                                x="10"
+                                y="7"
                                 width="1"
-                                height="2"
-                                fill="#ffffff"
-                                opacity="0.6"
+                                height="1"
+                                fill="#a84367"
                             />
                         </svg>
                         <div>
-                            <h4 style="font-size: 0.9rem">Warm Matcha</h4>
+                            <h4 style="font-size: 0.9rem">Party Cupcake</h4>
                             <span
-                                id="teaStatus"
+                                id="cupcakeStatus"
                                 style="
                                     font-size: 0.9rem;
                                     color: var(--green-dark);
                                 "
-                                >Sips taken: 0</span
+                                >Bites taken: 0</span
                             >
                         </div>
-                        <button class="pixel-btn" onclick="sipTea()">
-                            🍵 Take a Sip
+                        <button class="pixel-btn" onclick="eatCupcake()">
+                            🧁 Take a Bite
                         </button>
                     </div>
                 </div>
@@ -684,9 +664,9 @@
 
             <!-- INVENTORY / SKILLS -->
             <section class="pixel-box">
-                <h2>Claire's Backpack (Skills)</h2>
+                <h2>Claire's Party Favors (Skills)</h2>
                 <p style="font-size: 0.95rem">
-                    Select an item from inventory to inspect:
+                    Select a gift from inventory to inspect:
                 </p>
 
                 <div class="inventory-grid">
@@ -694,73 +674,73 @@
                         class="inventory-slot"
                         onclick="
                             inspectItem(
-                                'MUSIC',
-                                'Mastery in tones and undertones',
+                                'PRESENT',
+                                'Wrapped with extra love and cozy beats!',
                             )
                         "
                     >
-                        📜
+                        🎁
                     </div>
                     <div
                         class="inventory-slot"
                         onclick="
                             inspectItem(
-                                'MUSICAL NOTE MAGIC',
-                                'Spells for adding interactivity and sound synth.',
+                                'BIRTHDAY CAKE',
+                                'Packed with strawberry frosting and sweet melodies.',
                             )
                         "
                     >
-                        🪄
+                        🎂
                     </div>
                     <div
                         class="inventory-slot"
                         onclick="
                             inspectItem(
-                                'ARTIST',
-                                'Art out of my curiosity and development',
+                                'BALLOONS',
+                                'Lifts spirits and spreads birthday cheer.',
                             )
                         "
                     >
-                        🎨
+                        🎈
                     </div>
                     <div
                         class="inventory-slot"
                         onclick="
                             inspectItem(
-                                'COZY VIBES',
-                                'Passive Ability: Infuses warmth and kindness through music',
+                                'CONFETTI CANNON',
+                                'Explodes with vibrant pixel magic!',
                             )
                         "
                     >
-                        🌿
+                        🎉
                     </div>
                 </div>
                 <div class="slot-desc" id="inventoryDesc">
-                    💡 Click any slot above to examine Claire's stats.
+                    💡 Click any slot above to examine Claire's birthday loot.
                 </div>
             </section>
 
             <!-- QUESTS / PROJECTS -->
             <section class="pixel-box">
-                <h2>Completed Quests (Projects)</h2>
+                <h2>Completed Party Quests</h2>
                 <div class="quest-list">
                     <!-- Quest 1 -->
                     <div class="quest-card">
                         <div class="quest-info">
-                            <h4>Quest 01: The Whispering Woods Website</h4>
+                            <h4>Quest 01: Bake the Ultimate Cake</h4>
                             <p style="font-size: 0.95rem">
-                                An interactive storybook site designed for soft
-                                forest audio and visual chill.
+                                Crafted a delightful pixel strawberry shortcake
+                                complete with synth candle sparks.
                             </p>
                             <div class="quest-tags">
-                                <span class="tag">MUSIC</span>
-                                <span class="tag">AUDIO</span>
-                                <span class="tag">DESIGN</span>
+                                <span class="tag">BAKING</span>
+                                <span class="tag">PARTY</span>
+                                <span class="tag">SWEETS</span>
                             </div>
                         </div>
                         <button
                             class="pixel-btn"
-                            onclick="alert('Quest Completed!')"
+                            onclick="alert('Quest Completed! 🎉')"
                         >
                             View Quest
                         </button>
@@ -769,19 +749,19 @@
                     <!-- Quest 2 -->
                     <div class="quest-card">
                         <div class="quest-info">
-                            <h4>Quest 02: Cozy Garden Pixel Engine</h4>
+                            <h4>Quest 02: Decorate the Cozy Corner</h4>
                             <p style="font-size: 0.95rem">
-                                A lightweight JS widget for growing virtual
-                                plants on desktop screens.
+                                Hung pixel banners, blew up balloons, and
+                                invited awesome friends over!
                             </p>
                             <div class="quest-tags">
-                                <span class="tag">ART</span>
-                                <span class="tag">TONE</span>
+                                <span class="tag">DECOR</span>
+                                <span class="tag">CELEBRATION</span>
                             </div>
                         </div>
                         <button
                             class="pixel-btn"
-                            onclick="alert('Quest Completed!')"
+                            onclick="alert('Quest Completed! 🎉')"
                         >
                             View Quest
                         </button>
@@ -793,15 +773,17 @@
             <section class="quote-section">
                 <span class="quote-mark">“</span>
                 <div class="quote-text">
-                    "Even the smallest seed grows into a magnificent tree under
-                    gentle sunlight. Take your time, grow at your own rhythm,
-                    and remember to rest along the way."
+                    "Count your life by smiles, not tears. Count your age by
+                    friends, not years. Here's to another wonderful trip around
+                    the sun!"
                 </div>
-                <div class="quote-author">— COZY THOUGHT OF THE DAY</div>
+                <div class="quote-author">— BIRTHDAY WISH OF THE DAY 🎈</div>
             </section>
 
             <!-- FOOTER -->
-            <footer>Crafted with 🍵 & 💚 by Claire • 2026 Cozy Corner</footer>
+            <footer>
+                Crafted with 🍰 & 💖 for Claire's Special Day • 2026
+            </footer>
         </div>
 
         <!-- ==========================================
@@ -812,11 +794,11 @@
            1. INTERACTIVE DIALOGUE SYSTEM
            ------------------------------------------------ */
             const dialogues = [
-                "HEY THERE IM CLAIRE.",
-                "I LOVE LISTENING TO MUSIC.",
-                "Feel free to click around my desk, water the plant, or listen to the music!",
-                "Did you know? Small steps taken consistently make beautiful journeys.",
-                "Thank you for visiting! Have a wonderful and peaceful day. ✨",
+                "WELCOME TO MY BIRTHDAY PARTY!",
+                "ANOTHER YEAR, ANOTHER AWESOME PLAYLIST! 🎶",
+                "Make a wish, blow out the candles, or grab a slice of cake!",
+                "Thank you so much for celebrating with me today. ✨",
+                "Have a sweet and happy day! 🍰🎉",
             ];
             let dialogueIndex = 0;
 
@@ -832,36 +814,35 @@
             }
 
             /* ------------------------------------------------
-           2. DESK INTERACTIVES (Plant & Tea)
+           2. PARTY TABLE INTERACTIVES (Cake & Cupcake)
            ------------------------------------------------ */
-            let waterCount = 0;
-            function waterPlant() {
-                waterCount++;
-                const status = document.getElementById("plantStatus");
-                const leaf1 = document.getElementById("leaf1");
-                const leaf2 = document.getElementById("leaf2");
-                const leaf3 = document.getElementById("leaf3");
+            let isCandleLit = true;
+            function blowCandles() {
+                const status = document.getElementById("cakeStatus");
+                const flame = document.getElementById("flame");
 
-                if (waterCount === 1) {
-                    status.innerText = "Status: Hydrated 🌱";
-                    leaf2.setAttribute("fill", "#7c9a72");
-                } else if (waterCount === 3) {
-                    status.innerText = "Status: Blooming! 🌸";
-                    leaf3.setAttribute("fill", "#f2b5d4");
-                } else if (waterCount > 5) {
-                    status.innerText = "Status: Overflowing with Love! ✨";
+                if (isCandleLit) {
+                    flame.setAttribute("fill", "transparent");
+                    status.innerText = "Status: Wish Made! ✨";
+                    isCandleLit = false;
+                    spawnParticle("✨");
+                    spawnParticle("🎉");
+                } else {
+                    flame.setAttribute("fill", "#ffea00");
+                    status.innerText = "Status: Lit 🕯️";
+                    isCandleLit = true;
+                    spawnParticle("🔥");
                 }
 
-                spawnParticle("🍃");
                 playBeepSound(523.25); // C5 note
             }
 
-            let teaCount = 0;
-            function sipTea() {
-                teaCount++;
-                document.getElementById("teaStatus").innerText =
-                    `Sips taken: ${teaCount}`;
-                spawnParticle("🍵");
+            let biteCount = 0;
+            function eatCupcake() {
+                biteCount++;
+                document.getElementById("cupcakeStatus").innerText =
+                    `Bites taken: ${biteCount}`;
+                spawnParticle("🧁");
                 playBeepSound(659.25); // E5 note
             }
 
@@ -875,12 +856,18 @@
             }
 
             /* ------------------------------------------------
-           4. PARTICLE GENERATOR (Leaves & Hearts)
+           4. PARTICLE GENERATOR (Balloons & Confetti)
            ------------------------------------------------ */
+            const birthdayParticles = ["🎈", "🎉", "✨", "🍰", "🎁"];
+
             function spawnParticle(symbol) {
                 const particle = document.createElement("div");
                 particle.className = "particle";
-                particle.innerText = symbol;
+                particle.innerText =
+                    symbol ||
+                    birthdayParticles[
+                        Math.floor(Math.random() * birthdayParticles.length)
+                    ];
                 particle.style.left = Math.random() * 80 + 10 + "vw";
                 particle.style.animationDuration = Math.random() * 2 + 3 + "s";
                 document.body.appendChild(particle);
@@ -890,14 +877,13 @@
                 }, 4000);
             }
 
-            // Periodically drop gentle falling leaves
+            // Periodically drop gentle balloons and confetti
             setInterval(() => {
-                spawnParticle("🌿");
-            }, 5000);
+                spawnParticle();
+            }, 4000);
 
             /* ------------------------------------------------
-           5. WEB AUDIO API CHILL MUSIC & SOUND SYNTHESIZER
-           (Generates procedural cozy chiptune music)
+           5. WEB AUDIO API PARTY TUNE SYNTHESIZER
            ------------------------------------------------ */
             let audioCtx = null;
             let isPlaying = false;
@@ -934,14 +920,14 @@
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.2);
                 } catch (e) {
-                    // Audio fallback if user hasn't interacted
+                    // Audio fallback
                 }
             }
 
-            // Procedural pentatonic cozy melody loop
-            const pentatonicScale = [
-                261.63, 293.66, 329.63, 392.0, 440.0, 523.25,
-            ]; // C4, D4, E4, G4, A4, C5
+            // Festive melody notes
+            const festiveScale = [
+                261.63, 293.66, 329.63, 349.23, 392.0, 440.0, 523.25,
+            ]; // C4, D4, E4, F4, G4, A4, C5
             let noteStep = 0;
 
             function playCozyNote() {
@@ -950,19 +936,16 @@
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
 
-                // Alternate soft triangle & sine waves for lofi sound
                 osc.type = noteStep % 2 === 0 ? "triangle" : "sine";
 
-                // Choose warm gentle note
                 const noteIndex = Math.floor(
-                    Math.random() * pentatonicScale.length,
+                    Math.random() * festiveScale.length,
                 );
                 osc.frequency.setValueAtTime(
-                    pentatonicScale[noteIndex],
+                    festiveScale[noteIndex],
                     audioCtx.currentTime,
                 );
 
-                // Soft envelope
                 gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
                 gain.gain.linearRampToValueAtTime(
                     0.04,
@@ -989,17 +972,16 @@
                 }
 
                 const btn = document.getElementById("musicBtn");
-                const icon = document.getElementById("musicIcon");
 
                 if (!isPlaying) {
                     isPlaying = true;
                     btn.classList.add("active");
-                    btn.innerHTML = `<span id="musicIcon">🎶</span> Chill Music: ON`;
-                    musicInterval = setInterval(playCozyNote, 700); // Gentle slow tempo
+                    btn.innerHTML = `<span id="musicIcon">🎶</span> Party Tune: ON`;
+                    musicInterval = setInterval(playCozyNote, 600);
                 } else {
                     isPlaying = false;
                     clearInterval(musicInterval);
-                    btn.innerHTML = `<span id="musicIcon">🎵</span> Chill Music: OFF`;
+                    btn.innerHTML = `<span id="musicIcon">🎵</span> Party Tune: OFF`;
                 }
             }
         </script>
