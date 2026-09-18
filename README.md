@@ -7,5 +7,3 @@ my projects till it is done.
 ## Live Site
 
 🔗 [https://fsantos250000000108.github.io/Portfolio%20Testing](https://fsantos250000000108.github.io/Portfolio%20Testing
-
-gogigiiga
