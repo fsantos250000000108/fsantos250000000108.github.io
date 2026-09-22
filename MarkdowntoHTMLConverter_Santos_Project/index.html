@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MARKDOWN TO HTML CONVERTER // fSantos</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+
+    <body>
+        <!-- Main Terminal Window Container -->
+        <div class="terminal-window">
+            <!-- Window Title Bar -->
+            <div class="window-bar">
+                <div class="window-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="window-title">markdown_to_html_converter.app</div>
+                <div></div>
+            </div>
+
+            <!-- Main Content Body -->
+            <div class="terminal-body">
+                <!-- Status Pill -->
+                <div class="status-badge">
+                    <span class="status-dot"></span> SYSTEM ONLINE
+                </div>
+
+                <h1>Markdown to HTML Converter</h1>
+
+                <div id="container">
+                    <!-- Column 1: Input -->
+                    <div class="container-card">
+                        <div class="card-header">// 01. Markdown Input:</div>
+                        <div class="card-content">
+                            <textarea
+                                id="markdown-input"
+                                placeholder="Enter your markdown here..."
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Raw HTML -->
+                    <div class="container-card">
+                        <div class="card-header">// 02. Raw HTML Output:</div>
+                        <div class="card-content">
+                            <div id="html-output"></div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Preview -->
+                    <div class="container-card">
+                        <div class="card-header">// 03. HTML Preview:</div>
+                        <div class="card-content">
+                            <div id="preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
