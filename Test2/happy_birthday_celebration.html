@@ -282,8 +282,8 @@
                         <div
                             class="relative overflow-hidden rounded-2xl aspect-[4/5] shadow-inner border border-white/10"
                         >
-                            <!-- Inside <div class="photo-frame"> -->
                             <img
+                                id="birthdayGirlImg"
                                 src="birthday-photo.jpg"
                                 alt="Birthday Star"
                                 class="birthday-img"
@@ -439,13 +439,18 @@
                         </div>
 
                         <!-- Audio Element -->
-                        <!-- Inside <div class="music-card"> -->
                         <audio
                             id="bg-audio"
                             src="celebration.mp3"
                             preload="auto"
                             loop
-                        ></audio>
+                        >
+                            <source
+                                src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=happy-birthday-155461.mp3"
+                                type="audio/mpeg"
+                            />
+                            Your browser does not support the audio element.
+                        </audio>
                     </div>
 
                     <!-- Quick Action Buttons Grid -->
